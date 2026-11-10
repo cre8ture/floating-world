@@ -4,28 +4,28 @@
   <meta charset="UTF-8" />
   <link rel="icon" type="image/svg+xml" href="./kai-icon.svg" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Floating World — Interactive 3D Architecture Builder | Kai Kleinbard</title>
-  <meta name="description" content="Floating World by Kai Kleinbard — Interactive 3D kinetic machine canvas and architecture builder that compiles technical specs and PDFs into interlocking 3D systems." />
+  <title>Floating World Canvas — Turn Any Project Into a 3D World | Kai Kleinbard</title>
+  <meta name="description" content="Floating World Canvas by Kai Kleinbard — Turn any project description, technical spec, or PDF into an interactive 3D architectural island world and schematic diagram." />
   <meta name="author" content="Kai Kleinbard" />
 
   <!-- Open Graph / LinkedIn Featured Image Metadata -->
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://cre8ture.github.io/floating-world/" />
-  <meta property="og:site_name" content="Floating World — Kai Kleinbard" />
-  <meta property="og:title" content="Floating World — Interactive 3D Architecture Builder" />
-  <meta property="og:description" content="Interactive 3D kinetic machine canvas by Kai Kleinbard. Compile technical specs and PDFs into spatial, interlocking 3D architecture diagrams." />
+  <meta property="og:site_name" content="Floating World Canvas — Kai Kleinbard" />
+  <meta property="og:title" content="Floating World Canvas — Turn Any Project Into a 3D World" />
+  <meta property="og:description" content="Interactive 3D architectural world builder by Kai Kleinbard. Turn any project spec or PDF into an interconnected 3D floating island and schematic diagram." />
   <meta property="og:image" content="https://cre8ture.github.io/floating-world/og-image.png" />
   <meta property="og:image:type" content="image/png" />
   <meta property="og:image:width" content="1200" />
   <meta property="og:image:height" content="630" />
-  <meta property="og:image:alt" content="Floating World — Interactive 3D Architecture Builder by Kai Kleinbard" />
+  <meta property="og:image:alt" content="Floating World Canvas — Turn Any Project Into a 3D World by Kai Kleinbard" />
 
   <!-- Twitter / X Card Metadata -->
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Floating World — Interactive 3D Architecture Builder" />
-  <meta name="twitter:description" content="Interactive 3D kinetic machine canvas by Kai Kleinbard. Compile technical specs and PDFs into spatial, interlocking 3D architecture diagrams." />
+  <meta name="twitter:title" content="Floating World Canvas — Turn Any Project Into a 3D World" />
+  <meta name="twitter:description" content="Interactive 3D architectural world builder by Kai Kleinbard. Turn any project spec or PDF into an interconnected 3D floating island and schematic diagram." />
   <meta name="twitter:image" content="https://cre8ture.github.io/floating-world/og-image.png" />
-  <meta name="twitter:image:alt" content="Floating World — Interactive 3D Architecture Builder by Kai Kleinbard" />
+  <meta name="twitter:image:alt" content="Floating World Canvas — Turn Any Project Into a 3D World by Kai Kleinbard" />
 
   <link rel="image_src" href="https://cre8ture.github.io/floating-world/og-image.png" />
 
@@ -45,29 +45,29 @@
 
   <style>
     :root {
-      --bg-primary: #f2f1ed;
-      --bg-glass: rgba(242, 241, 237, 0.86);
-      --bg-card: rgba(255, 255, 255, 0.92);
-      --text-primary: #141413;
-      --text-secondary: #52514e;
-      --text-muted: #85847f;
-      --border-hairline: rgba(20, 20, 19, 0.14);
-      --border-strong: #141413;
-      --accent-active: #141413;
-      --accent-active-text: #f2f1ed;
+      --bg-primary: #ffffff;
+      --bg-glass: rgba(255, 255, 255, 0.72);
+      --bg-card: rgba(255, 255, 255, 0.88);
+      --text-primary: #18181b;
+      --text-secondary: #52525b;
+      --text-muted: #71717a;
+      --border-hairline: rgba(24, 24, 27, 0.12);
+      --border-strong: #18181b;
+      --accent-active: #db2777;
+      --accent-active-text: #ffffff;
     }
 
     body.dark-polarity {
-      --bg-primary: #0d0d0c;
-      --bg-glass: rgba(18, 18, 17, 0.86);
-      --bg-card: rgba(26, 26, 24, 0.94);
-      --text-primary: #f0efeb;
-      --text-secondary: #a6a59f;
-      --text-muted: #666560;
-      --border-hairline: rgba(240, 239, 235, 0.14);
-      --border-strong: #f0efeb;
-      --accent-active: #f0efeb;
-      --accent-active-text: #0d0d0c;
+      --bg-primary: #0f1115;
+      --bg-glass: rgba(20, 22, 28, 0.75);
+      --bg-card: rgba(28, 31, 38, 0.9);
+      --text-primary: #f4f4f5;
+      --text-secondary: #a1a1aa;
+      --text-muted: #71717a;
+      --border-hairline: rgba(244, 244, 245, 0.14);
+      --border-strong: #f4f4f5;
+      --accent-active: #ec4899;
+      --accent-active-text: #ffffff;
     }
 
     * {
@@ -114,47 +114,51 @@
       cursor: grabbing;
     }
 
-    /* Minimal floating 3D tags */
-    .part-tag {
+    /* Perimeter Architectural Callout Labels (connected via SVG elbow leader lines) */
+    .callout-card {
       position: absolute;
-      transform: translate(-50%, -100%);
       pointer-events: auto;
       cursor: pointer;
-      padding: 3px 8px;
-      border-radius: 4px;
+      padding: 5px 10px;
+      border-radius: 7px;
       background: var(--bg-card);
       border: 1px solid var(--border-hairline);
       color: var(--text-primary);
-      font-size: 10.5px;
-      font-weight: 500;
-      white-space: nowrap;
-      display: inline-flex;
-      align-items: center;
-      gap: 5px;
-      box-shadow: 0 3px 10px rgba(0,0,0,0.08);
-      transition: transform 0.12s ease, border-color 0.15s ease, background-color 0.15s ease;
+      max-width: 215px;
+      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.06);
+      backdrop-filter: blur(8px);
+      transition: border-color 0.15s ease, background-color 0.15s ease, box-shadow 0.15s ease;
     }
 
-    .part-tag:hover {
+    .callout-card.side-left {
+      transform: translate(-100%, -50%);
+      text-align: right;
+    }
+
+    .callout-card.side-right {
+      transform: translate(0%, -50%);
+      text-align: left;
+    }
+
+    .callout-card:hover {
       border-color: var(--border-strong);
-      transform: translate(-50%, -105%) scale(1.03);
       z-index: 35;
     }
 
-    .part-tag.selected {
+    .callout-card.selected {
       background: var(--accent-active);
       color: var(--accent-active-text);
-      border-color: var(--border-strong);
+      border-color: var(--accent-active);
       z-index: 40;
-      box-shadow: 0 6px 18px rgba(0,0,0,0.2);
+      box-shadow: 0 6px 20px rgba(219, 39, 119, 0.28);
     }
 
-    /* Part library tile in popup */
+    /* Landmark library tile in popup */
     .part-tile {
       border: 1px solid var(--border-hairline);
       background: var(--bg-card);
-      border-radius: 5px;
-      padding: 6px 8px;
+      border-radius: 6px;
+      padding: 7px 9px;
       cursor: pointer;
       transition: all 0.14s ease;
       display: flex;
@@ -172,7 +176,7 @@
     .part-tile.active-type {
       background: var(--accent-active);
       color: var(--accent-active-text);
-      border-color: var(--border-strong);
+      border-color: var(--accent-active);
     }
 
     .pill-btn {
@@ -181,37 +185,40 @@
       color: var(--text-primary);
       font-family: 'IBM Plex Mono', monospace;
       font-size: 10px;
-      letter-spacing: 0.04em;
-      padding: 5px 10px;
-      border-radius: 4px;
+      font-weight: 500;
+      letter-spacing: 0.03em;
+      padding: 6px 10px;
+      border-radius: 6px;
       cursor: pointer;
       transition: all 0.14s ease;
       display: inline-flex;
       align-items: center;
+      justify-content: center;
       gap: 5px;
     }
 
     .pill-btn:hover {
       border-color: var(--border-strong);
+      transform: translateY(-0.5px);
     }
 
     .pill-btn.active {
       background: var(--accent-active);
       color: var(--accent-active-text);
-      border-color: var(--border-strong);
+      border-color: var(--accent-active);
     }
 
     .swatch {
-      width: 16px;
-      height: 16px;
+      width: 17px;
+      height: 17px;
       border-radius: 9999px;
       cursor: pointer;
-      border: 1.5px solid rgba(128,128,128,0.4);
+      border: 1.5px solid rgba(0, 0, 0, 0.18);
       transition: transform 0.12s ease;
     }
 
     .swatch:hover, .swatch.active {
-      transform: scale(1.22);
+      transform: scale(1.24);
       border-color: var(--border-strong);
     }
 
@@ -223,10 +230,10 @@
     /* Tutorial Spotlight Highlight */
     @keyframes pulse-ring {
       0%, 100% {
-        box-shadow: 0 0 0 2px var(--border-strong), 0 0 18px rgba(240, 239, 235, 0.45);
+        box-shadow: 0 0 0 2px #db2777, 0 0 18px rgba(219, 39, 119, 0.45);
       }
       50% {
-        box-shadow: 0 0 0 4px var(--border-strong), 0 0 28px rgba(240, 239, 235, 0.85);
+        box-shadow: 0 0 0 4px #db2777, 0 0 28px rgba(219, 39, 119, 0.85);
       }
     }
 
@@ -234,50 +241,68 @@
       position: relative !important;
       z-index: 60 !important;
       animation: pulse-ring 1.5s infinite ease-in-out;
-      border-color: var(--border-strong) !important;
     }
   </style>
 </head>
-<body class="h-screen w-screen overflow-hidden relative dark-polarity">
+<body class="h-screen w-screen overflow-hidden relative">
 
-  <!-- FULL-SCREEN 3D INTERLOCKING MACHINE CANVAS -->
+  <!-- FULL-SCREEN 3D FLOATING WORLD CANVAS -->
   <div id="canvas-wrapper">
     <canvas id="webgl-canvas" class="w-full h-full block"></canvas>
+    <svg id="callouts-svg" class="absolute inset-0 w-full h-full pointer-events-none z-10 overflow-visible"></svg>
     <div id="labels-layer" class="absolute inset-0 pointer-events-none overflow-hidden z-20"></div>
   </div>
 
-  <!-- MINIMAL HIERARCHICAL TOP BAR -->
-  <header class="fixed top-3 left-3 right-3 z-30 flex items-center justify-between pointer-events-none">
-    <!-- Left: Machine Name + Hierarchical Main Actions (+ COMPILE & SCRATCH) -->
-    <div class="flex items-center gap-2 pointer-events-auto">
-      <div id="brand-chip" class="glass px-3 py-1.5 rounded flex items-center gap-2.5 shadow-sm">
-        <span class="w-2 h-2 rounded-full bg-current animate-pulse"></span>
-        <span id="machine-title" class="font-display text-xs font-semibold tracking-tight">floating-world</span>
+  <!-- TRANSLUCENT LEFT SIDEBAR CONTROLS (SEE THE FLOATING WORLD BENEATH IT) -->
+  <aside id="left-dock" class="fixed top-4 left-4 z-30 w-60 max-w-[82vw] flex flex-col gap-2 pointer-events-none">
+    <!-- World Identity Card -->
+    <div id="brand-chip" class="glass p-3 rounded-xl flex flex-col gap-1.5 shadow-sm pointer-events-auto">
+      <div class="flex items-center justify-between">
+        <span class="font-mono-tech text-[9px] uppercase tracking-widest px-1.5 py-0.5 rounded bg-pink-500/10 text-pink-600 font-semibold">
+          FLOATING WORLD
+        </span>
+        <button id="btn-help-tour" class="builder-ui font-mono-tech text-[10px] w-5 h-5 rounded-full flex items-center justify-center border border-current opacity-60 hover:opacity-100" title="Show interactive guide">?</button>
       </div>
-
-      <!-- Hierarchical Main Builder Actions (Hidden in Viewer-Only Share/Download) -->
-      <button id="btn-open-compiler" class="pill-btn active builder-ui font-medium" title="Auto-compile a PDF or spec into a 3D machine">
-        + COMPILE
-      </button>
-      <button id="btn-clear-scratch" class="pill-btn builder-ui" title="Start a blank machine from scratch">
-        SCRATCH
-      </button>
+      <div class="flex items-center gap-2 mt-0.5">
+        <span class="w-2.5 h-2.5 rounded-full bg-pink-500 animate-pulse shrink-0"></span>
+        <span id="machine-title" class="font-display text-sm font-bold tracking-tight truncate">sky-sanctuary</span>
+      </div>
+      <p class="text-[10.5px] leading-snug" style="color: var(--text-secondary);">
+        Click any structure or spot on the island lawn to place &amp; customize landmarks.
+      </p>
     </div>
 
-    <!-- Right: View & Export Actions -->
-    <div class="flex items-center gap-1.5 pointer-events-auto">
-      <button id="btn-wireframe" class="pill-btn active" title="Toggle X-Ray Blueprint">X-RAY</button>
-      <button id="btn-theme" class="pill-btn active" title="Toggle Dark / Light Mode">DARK</button>
-      <button id="btn-download-html" class="pill-btn builder-ui" title="Download standalone viewer HTML">↓ DOWNLOAD</button>
-      <button id="btn-share-link" class="pill-btn builder-ui" title="Copy compressed viewer-only link">⇄ SHARE LINK</button>
-      <button id="btn-help-tour" class="pill-btn builder-ui px-2" title="Show interactive guide">?</button>
+    <!-- Primary World Builder Actions (+ COMPILE & SCRATCH) -->
+    <div class="builder-ui glass p-2 rounded-xl flex flex-col gap-1.5 shadow-sm pointer-events-auto">
+      <button id="btn-open-compiler" class="pill-btn active w-full py-2 font-semibold" title="Turn any project spec or PDF into a 3D floating world">
+        + TURN PROJECT INTO WORLD
+      </button>
+      <div class="grid grid-cols-2 gap-1.5">
+        <button id="btn-clear-scratch" class="pill-btn" title="Start a fresh floating island from scratch">
+          SCRATCH
+        </button>
+        <button id="btn-add-landmark" class="pill-btn" title="Add a new landmark to the island">
+          + LANDMARK
+        </button>
+      </div>
     </div>
-  </header>
+
+    <!-- Diagram View & Export Controls -->
+    <div class="glass p-2 rounded-xl flex flex-col gap-1.5 shadow-sm pointer-events-auto">
+      <button id="btn-diagram-mode" class="pill-btn w-full py-2 font-semibold" title="Fade out island and spread components into an architectural diagram">
+        DIAGRAM VIEW
+      </button>
+      <div class="builder-ui grid grid-cols-2 gap-1.5 pt-1" style="border-top: 1px solid var(--border-hairline);">
+        <button id="btn-download-html" class="pill-btn" title="Download standalone viewer HTML">↓ DOWNLOAD</button>
+        <button id="btn-share-link" class="pill-btn" title="Copy compressed viewer-only link">⇄ SHARE</button>
+      </div>
+    </div>
+  </aside>
 
   <!-- SINGLE-WINDOW GUIDED SPOTLIGHT TUTORIAL (FIRST VISIT IN BUILDER MODE ONLY) -->
-  <div id="tutorial-window" class="builder-ui fixed z-50 hidden glass rounded-md p-4 shadow-2xl w-80 pointer-events-auto transition-all duration-200" style="border-color: var(--border-strong);">
+  <div id="tutorial-window" class="builder-ui fixed z-50 hidden glass rounded-xl p-4 shadow-2xl w-80 pointer-events-auto transition-all duration-200" style="border-color: var(--border-strong);">
     <div class="flex items-center justify-between pb-2 mb-2" style="border-bottom: 1px solid var(--border-hairline);">
-      <span id="tutorial-step-badge" class="font-mono-tech text-[9px] px-1.5 py-0.5 rounded uppercase" style="background: var(--accent-active); color: var(--accent-active-text);">
+      <span id="tutorial-step-badge" class="font-mono-tech text-[9px] px-2 py-0.5 rounded-full uppercase" style="background: var(--accent-active); color: var(--accent-active-text);">
         STEP 1 OF 5
       </span>
       <button id="btn-tutorial-skip" type="button" class="font-mono-tech text-[9px] uppercase tracking-wider opacity-70 hover:opacity-100">
@@ -285,10 +310,10 @@
       </button>
     </div>
     <h4 id="tutorial-title" class="font-display text-xs font-semibold mb-1">
-      Interactive 3D Machine Canvas
+      Interactive Floating World
     </h4>
     <p id="tutorial-body" class="text-[11px] leading-relaxed mb-3.5" style="color: var(--text-secondary);">
-      Click any 3D part to swap its mechanism, rename it, or drag it across the floor. Click any empty spot on the floor grid to place a new interlocking part.
+      Click any 3D architectural landmark to swap its design, recolor it, or drag it across the island. Click anywhere on the green island terrain to build a new structure.
     </p>
     <div class="flex items-center justify-between">
       <div id="tutorial-dots" class="flex items-center gap-1"></div>
@@ -299,42 +324,42 @@
     </div>
   </div>
 
-  <!-- CONTEXTUAL POPUP BUILDER MENU (OPENS WHEN CLICKING A PART OR THE FLOOR GRID) -->
-  <div id="part-popup" class="builder-ui fixed z-40 hidden glass rounded-md p-3 shadow-2xl w-[360px] max-w-[94vw] pointer-events-auto">
-    <!-- Top Row: Selected Part / Grid Target + Actions -->
+  <!-- CONTEXTUAL POPUP BUILDER MENU (OPENS WHEN CLICKING A LANDMARK OR THE ISLAND TERRAIN) -->
+  <div id="part-popup" class="builder-ui fixed z-40 hidden glass rounded-xl p-3.5 shadow-2xl w-[365px] max-w-[94vw] pointer-events-auto">
+    <!-- Top Row: Selected Landmark / Island Target + Actions -->
     <div class="flex items-center justify-between gap-2 pb-2 mb-2" style="border-bottom: 1px solid var(--border-hairline);">
       <div class="flex items-center gap-1.5 flex-1 min-w-0">
-        <span id="popup-context-badge" class="font-mono-tech text-[9px] px-1.5 py-0.5 rounded uppercase" style="background: var(--accent-active); color: var(--accent-active-text);">PART</span>
-        <input id="part-name-input" type="text" class="text-xs font-medium bg-transparent px-1.5 py-0.5 rounded border border-transparent focus:border-current focus:outline-none w-full truncate" value="orchestrator-core" title="Rename component" />
+        <span id="popup-context-badge" class="font-mono-tech text-[9px] px-1.5 py-0.5 rounded uppercase" style="background: var(--accent-active); color: var(--accent-active-text);">LANDMARK</span>
+        <input id="part-name-input" type="text" class="text-xs font-semibold bg-transparent px-1.5 py-0.5 rounded border border-transparent focus:border-current focus:outline-none w-full truncate" value="orchestrator-core" title="Rename component" />
       </div>
       <div class="flex items-center gap-1 shrink-0">
-        <button id="btn-mode-append" class="pill-btn active text-[9px] py-0.5 px-2" title="Add a new meshing part at this spot">+ ADD</button>
-        <button id="btn-mode-swap" class="pill-btn text-[9px] py-0.5 px-2" title="Swap selected part's mechanism">SWAP</button>
-        <button id="btn-delete-part" class="pill-btn text-[9px] py-0.5 px-2 text-red-600" title="Remove selected part">✕</button>
+        <button id="btn-mode-append" class="pill-btn active text-[9px] py-0.5 px-2" title="Build a new landmark at this spot">+ ADD</button>
+        <button id="btn-mode-swap" class="pill-btn text-[9px] py-0.5 px-2" title="Swap selected landmark's architecture">SWAP</button>
+        <button id="btn-delete-part" class="pill-btn text-[9px] py-0.5 px-2 text-rose-600" title="Remove selected landmark">✕</button>
         <button id="btn-close-popup" class="pill-btn text-[9px] py-0.5 px-2" title="Close menu">DONE</button>
       </div>
     </div>
 
-    <!-- Pre-Built Moving Parts Grid -->
+    <!-- Pre-Built Architectural Landmarks Grid -->
     <div id="parts-grid" class="grid grid-cols-2 gap-1.5 mb-2.5"></div>
 
-    <!-- Bottom Row: Monochromatic Default + Optional Color Swatches -->
+    <!-- Bottom Row: Vibrant Palette Swatches -->
     <div class="flex items-center justify-between pt-1.5" style="border-top: 1px solid var(--border-hairline);">
       <div class="flex items-center gap-1.5">
-        <button id="btn-color-mono" class="pill-btn text-[9px] py-0.5 px-2">MONO</button>
+        <button id="btn-color-mono" class="pill-btn text-[9px] py-0.5 px-2">AUTO</button>
         <div id="swatch-row" class="flex items-center gap-1.5"></div>
       </div>
-      <span class="font-mono-tech text-[9px]" style="color: var(--text-muted);">DRAG PART TO MOVE</span>
+      <span class="font-mono-tech text-[9px]" style="color: var(--text-muted);">DRAG TO REPOSITION</span>
     </div>
   </div>
 
-  <!-- AUTO-COMPILER MODAL (UPLOAD PDF OR PASTE SPEC) -->
-  <div id="compiler-modal" class="builder-ui fixed inset-0 z-50 hidden items-center justify-center p-4" style="background: rgba(10, 10, 10, 0.65); backdrop-filter: blur(5px);">
-    <div class="glass w-full max-w-lg rounded-md p-5 shadow-2xl" style="background: var(--bg-primary); border-color: var(--border-strong);">
+  <!-- AUTO-COMPILER MODAL (UPLOAD PDF OR PASTE SPEC TO GENERATE FLOATING WORLD) -->
+  <div id="compiler-modal" class="builder-ui fixed inset-0 z-50 hidden items-center justify-center p-4" style="background: rgba(24, 24, 27, 0.35); backdrop-filter: blur(6px);">
+    <div class="glass w-full max-w-lg rounded-2xl p-5 shadow-2xl" style="background: var(--bg-primary); border-color: var(--border-strong);">
       <div class="flex items-center justify-between pb-3 mb-3" style="border-bottom: 1px solid var(--border-hairline);">
         <div>
-          <h3 class="font-display text-sm font-semibold">Compile Project Into 3D Machine</h3>
-          <p class="text-[11px]" style="color: var(--text-secondary);">Upload a technical PDF or paste component notes to auto-assemble a non-linear interlocking machine.</p>
+          <h3 class="font-display text-sm font-bold">Turn Any Project Into a Floating World</h3>
+          <p class="text-[11px]" style="color: var(--text-secondary);">Upload a technical PDF or paste project modules to generate an interconnected 3D island sanctuary.</p>
         </div>
         <button id="btn-close-compiler" class="pill-btn">✕</button>
       </div>
@@ -347,18 +372,18 @@
         <span id="compile-status" class="font-mono-tech text-[10px]" style="color: var(--text-muted);">READY</span>
       </div>
 
-      <input id="compile-title-input" type="text" class="w-full mb-2 p-2 rounded text-xs font-medium bg-transparent" style="border: 1px solid var(--border-hairline);" placeholder="System / Project Name (e.g., floating-world, telemetry-pipeline)" />
+      <input id="compile-title-input" type="text" class="w-full mb-2 p-2 rounded-lg text-xs font-medium bg-transparent" style="border: 1px solid var(--border-hairline);" placeholder="Project / World Name (e.g., sky-sanctuary, telemetry-atlas)" />
 
-      <textarea id="compile-spec-input" rows="6" class="w-full p-2.5 rounded font-mono-tech text-[11px] bg-transparent focus:outline-none mb-3" style="border: 1px solid var(--border-hairline);" placeholder="Paste architecture modules or upload PDF...&#10;Example:&#10;- auth-gateway (Token &amp; Rate Lock)&#10;- schema-registry (Typed JSON Schema)&#10;- orchestrator-core (Parallel Task Loop)&#10;- vector-index (Full-Text &amp; Semantic Search)&#10;- sandbox-runtime (Isolated Container Worker)&#10;- inference-router (Multi-Model Streaming API)&#10;- event-stream (Sequence Store + SSE)"></textarea>
+      <textarea id="compile-spec-input" rows="6" class="w-full p-2.5 rounded-lg font-mono-tech text-[11px] bg-transparent focus:outline-none mb-3" style="border: 1px solid var(--border-hairline);" placeholder="Paste architecture modules or upload PDF...&#10;Example:&#10;- auth-gateway (Token &amp; Rate Lock)&#10;- schema-registry (Typed JSON Schema)&#10;- orchestrator-core (Parallel Task Loop)&#10;- vector-index (Full-Text &amp; Semantic Search)&#10;- sandbox-runtime (Isolated Container Worker)&#10;- inference-router (Multi-Model Streaming API)&#10;- event-stream (Sequence Store + SSE)"></textarea>
 
       <div class="flex items-center justify-end gap-2">
-        <button id="btn-run-compile" class="pill-btn active px-4 py-1.5">BUILD MACHINE →</button>
+        <button id="btn-run-compile" class="pill-btn active px-4 py-1.5">GENERATE FLOATING WORLD →</button>
       </div>
     </div>
   </div>
 
   <!-- TOAST NOTIFICATION -->
-  <div id="toast" class="fixed bottom-4 right-4 z-50 hidden glass px-3 py-2 rounded text-xs font-mono-tech shadow-lg"></div>
+  <div id="toast" class="fixed bottom-4 right-4 z-50 hidden glass px-3.5 py-2 rounded-xl text-xs font-mono-tech shadow-lg"></div>
 
   <script>
     /**
@@ -372,76 +397,76 @@
 
     /**
      * ============================================================================
-     * 2. PRE-BUILT MOVING MACHINE PARTS CATALOG
+     * 2. ARCHITECTURAL WORLD LANDMARKS CATALOG (INSPIRED BY REFERENCE ART)
      * ============================================================================
      */
     const MECHANISM_PARTS = [
-      { type: 'gear',     label: 'Spur Gear',       sub: 'Meshing Rotary Cog' },
-      { type: 'conveyor', label: 'Conveyor Belt',   sub: 'Rolling Track + Packets' },
-      { type: 'turbine',  label: 'Axial Turbine',   sub: 'Multi-Blade Rotor' },
-      { type: 'pistons',  label: '3-Piston Crank',  sub: 'Reciprocating Bank' },
-      { type: 'gyro',     label: 'Tri-Axial Gyro',  sub: 'Orbital Gimbal Core' },
-      { type: 'valve',    label: 'Gate Shutter',    sub: 'Dual Reciprocating Gate' },
-      { type: 'drum',     label: 'Rotary Drum',     sub: 'Slotted Ring Cylinder' },
-      { type: 'cam',      label: 'Wave Cam Shaft',  sub: 'Sinusoidal Tappet Array' }
+      { type: 'gyro',     label: 'Mirrored Viaduct',  sub: 'Escher Pink Double Arcade',  defaultColor: '#d94873' },
+      { type: 'valve',    label: 'Terracotta Gate',   sub: 'Twin-Arch Bridge Fortress',  defaultColor: '#d47a55' },
+      { type: 'gear',     label: 'Royal Crescent',    sub: 'Curved Colonnade Wing',      defaultColor: '#e25b88' },
+      { type: 'turbine',  label: 'Skybeam Spire',     sub: 'Rotunda + Twin Pink Beams',  defaultColor: '#e88fb4' },
+      { type: 'pistons',  label: 'Classical Portico', sub: 'Pediment Temple Hall',       defaultColor: '#9b7eb8' },
+      { type: 'drum',     label: 'Lavender Keep',     sub: 'Turreted Bastion Tower',     defaultColor: '#8d6eb0' },
+      { type: 'conveyor', label: 'Cottage Village',   sub: 'Gabled Houses + Red Chimneys', defaultColor: '#e0b84c' },
+      { type: 'cam',      label: 'Blossom Grove',     sub: 'Pink & Gold Canopy Tree',    defaultColor: '#df6da9' }
     ];
 
     const OPTIONAL_SWATCHES = [
-      '#8c1d24', // Oxblood Red
-      '#2563eb', // Cobalt Blue
-      '#0d9488', // Teal
-      '#d97706', // Amber Brass
-      '#7c3aed', // Violet
-      '#16a34a'  // Emerald
+      '#d94873', // Crimson Rose Viaduct
+      '#d47a55', // Terracotta Gate
+      '#8d6eb0', // Lavender Castle
+      '#e0b84c', // Mustard Yellow Roof
+      '#399c47', // Lush Emerald Ribbon
+      '#2c6e9b'  // Cerulean Sky Slab
     ];
 
     /**
      * ============================================================================
-     * 3. INITIAL PROJECT MACHINE (2D CLUSTER LAYOUT)
+     * 3. INITIAL PROJECT WORLD (FLOATING ISLAND LANDMARKS)
      * ============================================================================
      */
     /*__EXPORTED_STATE_START__*/
     const EXPORTED_STATE = null;
     /*__EXPORTED_STATE_END__*/
 
-    let machineTitle = 'floating-world';
+    let machineTitle = 'sky-sanctuary';
 
-    // Non-linear 2D cluster around the central `orchestrator-core` hub (x, z coordinates)
     let machineParts = [
-      { id: 'p1', name: 'orchestrator-core (Event Loop)',                    type: 'gyro',     color: null, x: 0.0,  z: 0.0  },
-      { id: 'p2', name: 'auth-gateway (Token & Rate Lock)',                  type: 'valve',    color: null, x: -3.2, z: -1.6 },
-      { id: 'p3', name: 'schema-registry (Typed Dispatch)',                  type: 'gear',     color: null, x: -2.9, z: 1.7  },
-      { id: 'p4', name: 'inference-router (Multi-Model API)',                type: 'turbine',  color: null, x: 0.0,  z: -3.2 },
-      { id: 'p5', name: 'vector-index (Full-Text & Search)',                 type: 'pistons',  color: null, x: 0.0,  z: 3.2  },
-      { id: 'p6', name: 'sandbox-runtime (Isolated Worker)',                 type: 'drum',     color: null, x: 3.1,  z: -1.7 },
-      { id: 'p7', name: 'event-stream (Sequence Log + SSE)',                 type: 'conveyor', color: null, x: 3.2,  z: 1.6  }
+      { id: 'p1', name: 'orchestrator-core (Event Loop)',      desc: 'Central state loop & parallel task runner',           type: 'gyro',     color: '#d94873', x: -1.1, z: -0.9 },
+      { id: 'p2', name: 'auth-gateway (Token & Rate Lock)',    desc: 'Verifies session tokens & locks active run state',    type: 'valve',    color: '#d47a55', x: 0.0,  z: 3.3  },
+      { id: 'p3', name: 'schema-registry (Typed Dispatch)',    desc: 'Compile-time type definitions to JSON schemas',       type: 'gear',     color: '#e25b88', x: -2.9, z: 1.3  },
+      { id: 'p4', name: 'inference-router (Multi-Model API)',  desc: 'Streams model completions & structured dispatches',   type: 'turbine',  color: '#e88fb4', x: 2.3,  z: -1.8 },
+      { id: 'p5', name: 'vector-index (Full-Text & Search)',   desc: 'Read-only document store & indexed semantic search',  type: 'pistons',  color: '#9b7eb8', x: 2.2,  z: 0.4  },
+      { id: 'p6', name: 'sandbox-runtime (Isolated Worker)',   desc: 'Isolated per-session container with zero egress',     type: 'drum',     color: '#8d6eb0', x: 3.1,  z: -0.3 },
+      { id: 'p7', name: 'event-stream (Sequence Log + SSE)',   desc: 'Ordered event sequence log & live SSE fan-out',       type: 'conveyor', color: '#e0b84c', x: 1.5,  z: 2.1  }
     ];
 
-    // Computes a 2D non-linear cluster layout for any list of parts lacking explicit (x,z)
     function layoutCluster2D(parts) {
       if (!parts || parts.length === 0) return;
-      parts[0].x = 0;
-      parts[0].z = 0;
+      parts[0].x = -0.6;
+      parts[0].z = -0.5;
       const count = parts.length - 1;
-      const radius = count <= 4 ? 3.0 : 3.35;
+      const radius = 2.95;
       for (let i = 1; i < parts.length; i++) {
         const ringIdx = i - 1;
         const ringNum = Math.floor(ringIdx / 6);
-        const r = radius + ringNum * 2.9;
+        const r = radius + ringNum * 2.2;
         const itemsInRing = Math.min(6, count - ringNum * 6);
-        const angle = ((ringIdx % 6) / itemsInRing) * Math.PI * 2 - Math.PI * 0.75;
+        const angle = ((ringIdx % 6) / itemsInRing) * Math.PI * 2 - Math.PI * 0.4;
         parts[i].x = Number((Math.cos(angle) * r).toFixed(2));
         parts[i].z = Number((Math.sin(angle) * r).toFixed(2));
       }
     }
 
-    // Default state: Both Dark Mode (`isDarkPolarity = true`) and X-Ray (`isWireframe = true`) are ON by default
+    // White background & vibrant solid colors are the default
     let selectedIdx = 0;
-    let paletteClickMode = 'append'; // 'append' or 'swap'
-    let pendingGridPoint = { x: 2.2, z: 2.0 };
-    let isWireframe = true;
-    let isDarkPolarity = true;
+    let paletteClickMode = 'append';
+    let pendingGridPoint = { x: 1.8, z: 1.6 };
+    let isWireframe = false;
+    let isDarkPolarity = false;
     let isViewerOnly = false;
+    let isDiagramMode = false;
+    let diagramProgress = 0; // Smoothly animates 0 (Island World) <-> 1 (Spread Diagram)
 
     /**
      * ============================================================================
@@ -487,8 +512,8 @@
       if (EXPORTED_STATE && Array.isArray(EXPORTED_STATE.parts)) {
         machineTitle = EXPORTED_STATE.title || machineTitle;
         machineParts = EXPORTED_STATE.parts;
-        isDarkPolarity = EXPORTED_STATE.dark !== undefined ? !!EXPORTED_STATE.dark : true;
-        isWireframe = EXPORTED_STATE.xray !== undefined ? !!EXPORTED_STATE.xray : true;
+        isDiagramMode = !!EXPORTED_STATE.diagram;
+        diagramProgress = isDiagramMode ? 1 : 0;
         isViewerOnly = !!EXPORTED_STATE.viewerOnly;
       } else if (window.location.hash.startsWith('#m=')) {
         try {
@@ -501,10 +526,11 @@
               type: item[1],
               color: item[2] || null,
               x: typeof item[3] === 'number' ? item[3] : 0,
-              z: typeof item[4] === 'number' ? item[4] : 0
+              z: typeof item[4] === 'number' ? item[4] : 0,
+              desc: item[5] || ''
             }));
-            isDarkPolarity = decoded.d !== undefined ? decoded.d === 1 : true;
-            isWireframe = decoded.x !== undefined ? decoded.x === 1 : true;
+            isDiagramMode = decoded.g === 1;
+            diagramProgress = isDiagramMode ? 1 : 0;
             isViewerOnly = decoded.v === 1;
           }
         } catch (err) {
@@ -520,17 +546,17 @@
 
     /**
      * ============================================================================
-     * 5. THREE.JS SCENE & MONOCHROMATIC / COLOR MATERIAL FACTORY
+     * 5. THREE.JS SCENE & VIBRANT ILLUSTRATIVE SHADING
      * ============================================================================
      */
     const canvas = document.getElementById('webgl-canvas');
+    const calloutsSvg = document.getElementById('callouts-svg');
     const labelsLayer = document.getElementById('labels-layer');
 
     const scene = new THREE.Scene();
-    scene.background = new THREE.Color(0x0d0d0c);
-    scene.fog = new THREE.FogExp2(0x0d0d0c, 0.022);
+    scene.background = new THREE.Color(0xffffff);
 
-    const camera = new THREE.PerspectiveCamera(36, window.innerWidth / window.innerHeight, 0.1, 200);
+    const camera = new THREE.PerspectiveCamera(34, window.innerWidth / window.innerHeight, 0.1, 220);
 
     const renderer = new THREE.WebGLRenderer({ canvas, antialias: true });
     renderer.setSize(window.innerWidth, window.innerHeight);
@@ -538,260 +564,574 @@
     renderer.shadowMap.enabled = true;
     renderer.shadowMap.type = THREE.PCFSoftShadowMap;
 
-    const ambientLight = new THREE.AmbientLight(0xffffff, 0.78);
-    scene.add(ambientLight);
+    // Bright, crisp gallery illumination so flat gouache/architectural colors pop
+    const hemiLight = new THREE.HemisphereLight(0xffffff, 0xe8f5e9, 0.92);
+    hemiLight.position.set(0, 30, 0);
+    scene.add(hemiLight);
 
-    const dirLight = new THREE.DirectionalLight(0xffffff, 0.9);
-    dirLight.position.set(12, 22, 16);
+    const dirLight = new THREE.DirectionalLight(0xfffdf7, 0.65);
+    dirLight.position.set(14, 26, 18);
     dirLight.castShadow = true;
     dirLight.shadow.mapSize.width = 2048;
     dirLight.shadow.mapSize.height = 2048;
+    dirLight.shadow.camera.left = -12;
+    dirLight.shadow.camera.right = 12;
+    dirLight.shadow.camera.top = 12;
+    dirLight.shadow.camera.bottom = -12;
+    dirLight.shadow.bias = -0.0005;
     scene.add(dirLight);
 
-    const backLight = new THREE.DirectionalLight(0xffffff, 0.35);
-    backLight.position.set(-14, 10, -12);
-    scene.add(backLight);
+    const fillLight = new THREE.DirectionalLight(0xfce7f3, 0.35);
+    fillLight.position.set(-16, 12, -12);
+    scene.add(fillLight);
 
-    // Invisible Raycast Floor Plane for clicking empty grid locations & dragging parts
+    // Invisible Raycast Plane at island lawn level for clicking/dragging
     const floorHitPlane = new THREE.Mesh(
-      new THREE.PlaneGeometry(120, 120),
+      new THREE.CircleGeometry(7.2, 48),
       new THREE.MeshBasicMaterial({ visible: false })
     );
     floorHitPlane.rotation.x = -Math.PI / 2;
-    floorHitPlane.position.y = -1.35;
+    floorHitPlane.position.y = 0;
     scene.add(floorHitPlane);
 
-    const floorGroup = new THREE.Group();
-    scene.add(floorGroup);
+    // Master World Root (gently levitates in the middle of the screen)
+    const worldFloatGroup = new THREE.Group();
+    scene.add(worldFloatGroup);
 
-    function rebuildFloor() {
-      while (floorGroup.children.length > 0) floorGroup.remove(floorGroup.children[0]);
-      const c1 = isDarkPolarity ? 0x2c2c29 : 0xd2d0c8;
-      const c2 = isDarkPolarity ? 0x1a1a18 : 0xe3e1da;
-      const grid = new THREE.GridHelper(64, 64, c1, c2);
-      grid.position.y = -1.35;
-      floorGroup.add(grid);
+    const islandEnvGroup = new THREE.Group();
+    worldFloatGroup.add(islandEnvGroup);
+
+    const machineRoot = new THREE.Group();
+    worldFloatGroup.add(machineRoot);
+
+    function matFlat(hex, opacity = 1.0) {
+      return new THREE.MeshLambertMaterial({
+        color: hex,
+        wireframe: isWireframe,
+        transparent: opacity < 1.0,
+        opacity
+      });
     }
 
-    function createPartMaterials(customHex, isSelected) {
-      let primaryHex, secondaryHex, edgeHex;
-      if (customHex) {
-        const base = new THREE.Color(customHex);
-        primaryHex = base.getHex();
-        secondaryHex = base.clone().multiplyScalar(0.68).getHex();
-        edgeHex = isDarkPolarity ? 0xf0efeb : 0x141413;
-      } else {
-        if (isDarkPolarity) {
-          primaryHex = isSelected ? 0x383834 : 0x222220;
-          secondaryHex = 0x151514;
-          edgeHex = isSelected ? 0xffffff : 0x999892;
-        } else {
-          primaryHex = isSelected ? 0xd8d6ce : 0xeae8e1;
-          secondaryHex = 0xc8c6be;
-          edgeHex = isSelected ? 0x000000 : 0x2c2c2a;
-        }
-      }
-
-      return {
-        primary: new THREE.MeshStandardMaterial({
-          color: primaryHex,
-          roughness: 0.42,
-          metalness: 0.35,
-          wireframe: isWireframe,
-          polygonOffset: true,
-          polygonOffsetFactor: 1,
-          polygonOffsetUnits: 1
-        }),
-        secondary: new THREE.MeshStandardMaterial({
-          color: secondaryHex,
-          roughness: 0.55,
-          metalness: 0.45,
-          wireframe: isWireframe
-        }),
-        edge: new THREE.LineBasicMaterial({
-          color: edgeHex,
-          transparent: true,
-          opacity: isSelected ? 0.96 : (isWireframe ? 0.85 : 0.55)
-        })
-      };
-    }
-
-    function makeMesh(geo, mat, edgeMat, parent) {
-      const m = new THREE.Mesh(geo, mat);
+    function addStyledMesh(geo, hex, parent, edgeHex = null) {
+      const m = new THREE.Mesh(geo, matFlat(hex));
       m.castShadow = !isWireframe;
       m.receiveShadow = !isWireframe;
-      const edges = new THREE.EdgesGeometry(geo, 22);
-      const lines = new THREE.LineSegments(edges, edgeMat);
-      m.add(lines);
+      if (edgeHex !== null) {
+        const edges = new THREE.EdgesGeometry(geo, 28);
+        const line = new THREE.LineSegments(
+          edges,
+          new THREE.LineBasicMaterial({ color: edgeHex, transparent: true, opacity: 0.35 })
+        );
+        m.add(line);
+      }
       if (parent) parent.add(m);
       return m;
     }
 
-    function buildSpurGear(radius, thickness, teeth, mat, edgeMat) {
-      const g = new THREE.Group();
-      makeMesh(new THREE.CylinderGeometry(radius, radius, thickness, 28), mat, edgeMat, g);
-      makeMesh(new THREE.CylinderGeometry(radius * 0.4, radius * 0.4, thickness * 1.35, 16), mat, edgeMat, g);
-      const toothGeo = new THREE.BoxGeometry(radius * 0.25, thickness * 0.92, radius * 0.28);
-      for (let i = 0; i < teeth; i++) {
-        const a = (i / teeth) * Math.PI * 2;
-        const t = makeMesh(toothGeo, mat, edgeMat, g);
-        t.position.set(Math.cos(a) * (radius + radius * 0.08), 0, Math.sin(a) * (radius + radius * 0.08));
-        t.rotation.y = -a;
+    /**
+     * ============================================================================
+     * 6. FLOATING ISLAND BASE, CHARTREUSE SHARDS, & FOLIAGE BUILDER
+     * ============================================================================
+     */
+    let envAnimators = [];
+
+    function rebuildFloatingIslandBase() {
+      while (islandEnvGroup.children.length > 0) {
+        islandEnvGroup.remove(islandEnvGroup.children[0]);
       }
-      return g;
+      envAnimators = [];
+
+      // 1. Jagged, Faceted Colorful Cutout Rock Underbelly (Same vibrant color scheme)
+      const rockUnderbelly = new THREE.Group();
+      islandEnvGroup.add(rockUnderbelly);
+
+      // Corefaceted inverted crag mass
+      const coreCrag = addStyledMesh(
+        new THREE.ConeGeometry(5.55, 3.3, 9),
+        0x1d7a32,
+        rockUnderbelly,
+        0x124d1f
+      );
+      coreCrag.rotation.x = Math.PI;
+      coreCrag.position.y = -1.75;
+
+      // Overlapping angular cutout rock plates & spires around the bottom
+      const cutoutPalette = [
+        { main: 0x1d7a32, edge: 0x11491d }, // Deep forest green
+        { main: 0x369b3e, edge: 0x1d6824 }, // Lush emerald
+        { main: 0x8cc63f, edge: 0x5c8c1d }, // Bright lime-chartreuse
+        { main: 0xc7d332, edge: 0x8d9616 }, // Chartreuse yellow-green
+        { main: 0x78688a, edge: 0x4c3f5c }, // Lavender-slate stone
+        { main: 0x8d6eb0, edge: 0x5b4278 }, // Violet-amethyst cutout
+        { main: 0xd47a55, edge: 0x994d2f }, // Terracotta ochre
+        { main: 0xd94873, edge: 0x942244 }, // Crimson-rose facet
+        { main: 0x2c6e9b, edge: 0x184769 }  // Cerulean slate
+      ];
+
+      // Outer ring of jagged downward-pointing rock cutouts
+      const outerSpireCount = 18;
+      for (let i = 0; i < outerSpireCount; i++) {
+        const angle = (i / outerSpireCount) * Math.PI * 2;
+        const rad = 4.15 + ((i * 7) % 5) * 0.26;
+        const topRadius = 1.15 + ((i * 3) % 4) * 0.35;
+        const height = 2.0 + ((i * 5) % 5) * 0.55;
+        const sides = 4 + (i % 3); // 4, 5, or 6 flat cutout sides
+        const pal = cutoutPalette[i % cutoutPalette.length];
+
+        const shard = addStyledMesh(
+          new THREE.ConeGeometry(topRadius, height, sides),
+          pal.main,
+          rockUnderbelly,
+          pal.edge
+        );
+        shard.position.set(
+          Math.cos(angle) * rad,
+          -height * 0.48 - 0.12,
+          Math.sin(angle) * rad
+        );
+        // Point downward & tilt outward like paper-cut / low-poly cliff facets
+        shard.rotation.x = Math.PI + Math.sin(angle) * 0.24;
+        shard.rotation.z = Math.cos(angle) * 0.24;
+        shard.rotation.y = i * 1.1;
+        shard.scale.set(1.25, 1.0, 0.72);
+      }
+
+      // Inner deep jagged stalactite crags
+      const innerCragCount = 11;
+      for (let i = 0; i < innerCragCount; i++) {
+        const angle = (i / innerCragCount) * Math.PI * 2 + 0.3;
+        const rad = 1.85 + (i % 3) * 0.65;
+        const topRadius = 1.2 + (i % 3) * 0.35;
+        const height = 2.8 + (i % 4) * 0.65;
+        const pal = cutoutPalette[(i + 3) % cutoutPalette.length];
+
+        const deepSpire = addStyledMesh(
+          new THREE.ConeGeometry(topRadius, height, 5),
+          pal.main,
+          rockUnderbelly,
+          pal.edge
+        );
+        deepSpire.position.set(
+          Math.cos(angle) * rad,
+          -height * 0.52 - 0.35,
+          Math.sin(angle) * rad
+        );
+        deepSpire.rotation.x = Math.PI + (i % 2 === 0 ? 0.14 : -0.14);
+        deepSpire.rotation.z = (i % 3 === 0 ? 0.16 : -0.12);
+        deepSpire.rotation.y = i * 0.85;
+      }
+
+      // Central bottom apex crystal crag
+      const apexCrag = addStyledMesh(
+        new THREE.ConeGeometry(1.95, 3.9, 6),
+        0x78688a,
+        rockUnderbelly,
+        0x4c3f5c
+      );
+      apexCrag.rotation.x = Math.PI;
+      apexCrag.position.set(0, -2.25, 0);
+
+      // Detached levitating cutout rock fragments hovering beneath the island
+      const floatingFragments = [];
+      for (let i = 0; i < 10; i++) {
+        const angle = (i / 10) * Math.PI * 2;
+        const rad = 2.2 + (i % 4) * 0.95;
+        const baseY = -2.65 - (i % 3) * 0.55;
+        const pal = cutoutPalette[(i * 2) % cutoutPalette.length];
+        const frag = addStyledMesh(
+          new THREE.DodecahedronGeometry(0.34 + (i % 3) * 0.12, 0),
+          pal.main,
+          rockUnderbelly,
+          pal.edge
+        );
+        frag.scale.set(1.3, 0.75, 0.95);
+        frag.position.set(Math.cos(angle) * rad, baseY, Math.sin(angle) * rad);
+        frag.rotation.set(i * 0.5, i * 0.9, i * 0.3);
+        floatingFragments.push({ mesh: frag, baseY, phase: i });
+      }
+
+      envAnimators.push((elapsed) => {
+        floatingFragments.forEach((f) => {
+          f.mesh.position.y = f.baseY + Math.sin(elapsed * 1.5 + f.phase) * 0.18;
+          f.mesh.rotation.y = elapsed * 0.35 + f.phase;
+        });
+      });
+
+      // Stepped polygonal cutout rim ledges transitioning into the upper lawn
+      const midTurf = addStyledMesh(
+        new THREE.CylinderGeometry(5.95, 5.35, 0.42, 12),
+        0x369b3e,
+        islandEnvGroup,
+        0x1d7a32
+      );
+      midTurf.position.y = -0.22;
+
+      // 2. Bright Lime-Chartreuse Upper Lawn Terraces (faceted 12-sided cutout rim)
+      const topLawn = addStyledMesh(
+        new THREE.CylinderGeometry(5.75, 5.95, 0.18, 12),
+        0x8cc63f,
+        islandEnvGroup,
+        0x6ab038
+      );
+      topLawn.position.y = 0.02;
+
+      // Winding Cream Garden Paths across the lawn
+      const pathRing = addStyledMesh(
+        new THREE.RingGeometry(1.9, 2.25, 36),
+        0xe9edc9,
+        islandEnvGroup
+      );
+      pathRing.rotation.x = -Math.PI / 2;
+      pathRing.position.y = 0.12;
+
+      // 3. Iconic Tilted Chartreuse & Cerulean Sky Slabs (directly from reference images)
+      const chartreuseRamp = addStyledMesh(
+        new THREE.BoxGeometry(2.6, 4.8, 0.12),
+        0xc7d332,
+        islandEnvGroup,
+        0xeef66c
+      );
+      chartreuseRamp.position.set(-4.35, 1.45, 0.65);
+      chartreuseRamp.rotation.z = 0.38;
+      chartreuseRamp.rotation.y = 0.32;
+
+      // Cerulean Blue Sky Backdrop Wing (right-rear, as in image 1)
+      const skyWing = addStyledMesh(
+        new THREE.BoxGeometry(3.8, 3.2, 0.1),
+        0x2c6e9b,
+        islandEnvGroup
+      );
+      skyWing.position.set(1.6, 1.9, -4.1);
+      skyWing.rotation.z = -0.22;
+      skyWing.rotation.y = -0.28;
+
+      // 4. Perimeter Stylized Trees & Lush Foliage Clusters (Green, Golden-Ochre, Pink Blossom)
+      const treeSpecs = [
+        { x: -4.4, z: 2.3,  s: 1.0, c1: 0x268537, c2: 0x76b83f },
+        { x: -3.2, z: 3.6,  s: 0.9, c1: 0x6ab038, c2: 0x9fd14b },
+        { x: -1.6, z: 4.3,  s: 0.85, c1: 0x369b3e, c2: 0x8cc63f },
+        { x: 2.8,  z: 3.7,  s: 1.05, c1: 0x76b83f, c2: 0xb7dd54 },
+        { x: 4.5,  z: 1.8,  s: 1.15, c1: 0xdda82a, c2: 0xebcb42 }, // Golden yellow cypress
+        { x: 4.6,  z: -1.1, s: 1.1,  c1: 0xd99b26, c2: 0xe6be3a },
+        { x: 3.4,  z: -3.2, s: 1.35, c1: 0xd972b5, c2: 0xdfb938 }, // Giant pink & gold blossom tree
+        { x: -3.6, z: -2.8, s: 0.95, c1: 0x268537, c2: 0x6ab038 },
+        { x: -1.8, z: -4.1, s: 0.9,  c1: 0x4ba347, c2: 0x8cc63f },
+        { x: 0.4,  z: 2.6,  s: 0.75, c1: 0xd97925, c2: 0x8cc63f }
+      ];
+
+      treeSpecs.forEach((t, idx) => {
+        const treeG = new THREE.Group();
+        treeG.position.set(t.x, 0.1, t.z);
+
+        const trunk = addStyledMesh(
+          new THREE.CylinderGeometry(0.08 * t.s, 0.13 * t.s, 0.65 * t.s, 8),
+          0x7c5841,
+          treeG
+        );
+        trunk.position.y = 0.3 * t.s;
+
+        const puff1 = addStyledMesh(
+          new THREE.DodecahedronGeometry(0.55 * t.s, 1),
+          t.c1,
+          treeG
+        );
+        puff1.position.set(0, 0.82 * t.s, 0);
+
+        const puff2 = addStyledMesh(
+          new THREE.DodecahedronGeometry(0.42 * t.s, 1),
+          t.c2,
+          treeG
+        );
+        puff2.position.set(0.28 * t.s, 1.05 * t.s, 0.16 * t.s);
+
+        const puff3 = addStyledMesh(
+          new THREE.DodecahedronGeometry(0.36 * t.s, 1),
+          t.c2,
+          treeG
+        );
+        puff3.position.set(-0.25 * t.s, 0.96 * t.s, -0.18 * t.s);
+
+        islandEnvGroup.add(treeG);
+        envAnimators.push((elapsed) => {
+          treeG.rotation.z = Math.sin(elapsed * 1.3 + idx) * 0.025;
+        });
+      });
+
+      // 5. Low-Poly Purple/Slate Boulders on the Island Edge
+      const rockPositions = [
+        { x: -1.8, z: 3.8, s: 0.55 },
+        { x: -4.7, z: 1.5, s: 0.42 },
+        { x: 2.3,  z: 4.1, s: 0.38 }
+      ];
+      rockPositions.forEach((r) => {
+        const rock = addStyledMesh(
+          new THREE.DodecahedronGeometry(r.s, 0),
+          0x78688a,
+          islandEnvGroup,
+          0x584a69
+        );
+        rock.position.set(r.x, 0.28, r.z);
+        rock.rotation.set(0.4, 0.8, 0.2);
+      });
+
+      // 6. Floating Blossom Petals / Energy Spores drifting upward around the island
+      const petalsGroup = new THREE.Group();
+      islandEnvGroup.add(petalsGroup);
+      const petalList = [];
+      for (let i = 0; i < 42; i++) {
+        const angle = (i / 42) * Math.PI * 2;
+        const rad = 1.2 + (i % 7) * 0.65;
+        const pColor = i % 3 === 0 ? 0xf4a27e : (i % 2 === 0 ? 0xf472b6 : 0xfde047);
+        const p = addStyledMesh(
+          new THREE.OctahedronGeometry(0.075, 0),
+          pColor,
+          petalsGroup
+        );
+        const baseY = 0.4 + (i % 8) * 0.42;
+        p.position.set(Math.cos(angle) * rad, baseY, Math.sin(angle) * rad);
+        petalList.push({ mesh: p, baseY, speed: 0.8 + (i % 5) * 0.25, phase: i });
+      }
+
+      envAnimators.push((elapsed) => {
+        petalList.forEach((item) => {
+          item.mesh.position.y = item.baseY + Math.sin(elapsed * item.speed + item.phase) * 0.28;
+          item.mesh.rotation.y = elapsed * 1.2 + item.phase;
+          item.mesh.rotation.x = elapsed * 0.8;
+        });
+      });
     }
 
     /**
      * ============================================================================
-     * 6. PRE-BUILT SELF-MOVING COMPONENT CONSTRUCTORS
+     * 7. ARCHITECTURAL LANDMARK CONSTRUCTORS (MATCHING THE 2 REFERENCE IMAGES)
      * ============================================================================
      */
-    function createMechanismMesh(type, mats, index) {
+    function getPartMetadata(type) {
+      return MECHANISM_PARTS.find(m => m.type === type) || MECHANISM_PARTS[0];
+    }
+
+    function createLandmarkMesh(type, customColor, isSelected, index) {
       const group = new THREE.Group();
       const animators = [];
-      const dir = index % 2 === 0 ? 1 : -1;
+      const meta = getPartMetadata(type);
+      const mainHex = new THREE.Color(customColor || meta.defaultColor).getHex();
+      const accentEdge = isSelected ? 0x18181b : 0xffffff;
 
-      // Every unit has a bottom horizontal ring-gear Coupling Base so 2D neighbors mesh cleanly
-      const baseRingGear = buildSpurGear(0.92, 0.16, 16, mats.secondary, mats.edge);
-      baseRingGear.position.y = -0.85;
-      group.add(baseRingGear);
-      animators.push((t) => {
-        baseRingGear.rotation.y = t * 1.8 * dir;
-      });
+      if (type === 'gyro') {
+        // 1. MIRRORED ESCHER VIADUCT (Tall pink multi-arch double arcade, upright + inverted)
+        const viaduct = new THREE.Group();
+        viaduct.position.y = 1.45;
+        group.add(viaduct);
 
-      // Vertical central drive column from bottom ring gear to upper mechanism
-      makeMesh(new THREE.CylinderGeometry(0.14, 0.14, 1.7, 12), mats.secondary, mats.edge, group);
+        // Central bridge deck
+        addStyledMesh(new THREE.BoxGeometry(2.5, 0.16, 0.68), mainHex, viaduct, accentEdge);
 
-      if (type === 'gear') {
-        const mainGear = buildSpurGear(0.95, 0.34, 14, mats.primary, mats.edge);
-        mainGear.rotation.x = Math.PI / 2;
-        group.add(mainGear);
+        // 4 Tall Arched Piers (upright & mirrored bottom)
+        for (let i = -1.5; i <= 1.5; i += 1.0) {
+          // Upper pier
+          const pUp = addStyledMesh(new THREE.BoxGeometry(0.32, 1.15, 0.56), mainHex, viaduct, accentEdge);
+          pUp.position.set(i * 0.68, 0.62, 0);
 
-        const topPinion = buildSpurGear(0.45, 0.3, 8, mats.secondary, mats.edge);
-        topPinion.rotation.x = Math.PI / 2;
-        topPinion.position.set(0, 1.3, 0);
-        group.add(topPinion);
+          // Upper classical colonnade tier
+          const colUp = addStyledMesh(new THREE.CylinderGeometry(0.08, 0.08, 0.65, 10), 0x8f6b7d, viaduct);
+          colUp.position.set(i * 0.68, 1.52, 0);
 
-        animators.push((t) => {
-          mainGear.rotation.z = t * 1.8 * dir;
-          topPinion.rotation.z = -t * 3.6 * dir;
-        });
+          // Mirrored Lower Pier (upside-down reflection)
+          const pDown = addStyledMesh(new THREE.BoxGeometry(0.32, 0.95, 0.56), 0xc92a5b, viaduct, accentEdge);
+          pDown.position.set(i * 0.68, -0.52, 0);
+        }
 
-      } else if (type === 'conveyor') {
-        const len = 1.9;
-        makeMesh(new THREE.BoxGeometry(len, 0.16, 0.92), mats.secondary, mats.edge, group);
+        // Upper & Lower Classical Pediments
+        const topRoof = addStyledMesh(new THREE.BoxGeometry(2.6, 0.18, 0.72), 0x7b6d8d, viaduct, accentEdge);
+        topRoof.position.y = 1.9;
 
-        const rL = buildSpurGear(0.32, 0.88, 10, mats.primary, mats.edge);
-        rL.rotation.x = Math.PI / 2;
-        rL.position.set(-len / 2, 0, 0);
-        group.add(rL);
+        const botRoof = addStyledMesh(new THREE.BoxGeometry(2.4, 0.15, 0.66), 0xc92a5b, viaduct, accentEdge);
+        botRoof.position.y = -1.04;
 
-        const rR = buildSpurGear(0.32, 0.88, 10, mats.primary, mats.edge);
-        rR.rotation.x = Math.PI / 2;
-        rR.position.set(len / 2, 0, 0);
-        group.add(rR);
-
-        const parcels = [];
-        for (let i = 0; i < 3; i++) {
-          const p = makeMesh(new THREE.BoxGeometry(0.28, 0.24, 0.42), mats.primary, mats.edge, group);
-          parcels.push({ mesh: p, offset: i / 3 });
+        // Glowing coral orbs along the balustrade
+        const orbs = [];
+        for (let i = -2; i <= 2; i++) {
+          const orb = addStyledMesh(new THREE.SphereGeometry(0.085, 12, 12), 0xff6b6b, viaduct);
+          orb.position.set(i * 0.52, 1.28, 0.3);
+          orbs.push(orb);
         }
 
         animators.push((t) => {
-          rL.rotation.z = -t * 2.5;
-          rR.rotation.z = -t * 2.5;
-          parcels.forEach((p) => {
-            const u = (t * 0.48 + p.offset) % 1;
-            p.mesh.position.set(-len / 2 + u * len, 0.24, 0);
+          viaduct.position.y = 1.45 + Math.sin(t * 1.6 + index) * 0.1;
+          orbs.forEach((o, idx) => {
+            o.scale.setScalar(0.9 + Math.sin(t * 3.2 + idx) * 0.22);
           });
-        });
-
-      } else if (type === 'turbine') {
-        const stages = [];
-        for (let s = -1; s <= 1; s++) {
-          const st = buildSpurGear(0.86 - Math.abs(s) * 0.1, 0.2, 16, mats.primary, mats.edge);
-          st.rotation.z = Math.PI / 2;
-          st.position.x = s * 0.36;
-          group.add(st);
-          stages.push({ mesh: st, dir: s % 2 === 0 ? 1 : -1 });
-        }
-        const shroud = makeMesh(new THREE.CylinderGeometry(1.02, 1.02, 1.05, 24, 1, true), mats.secondary, mats.edge, group);
-        shroud.rotation.z = Math.PI / 2;
-
-        animators.push((t) => {
-          stages.forEach((st, i) => {
-            st.mesh.rotation.x = t * (3.2 + i * 0.4) * st.dir;
-          });
-        });
-
-      } else if (type === 'pistons') {
-        const bank = new THREE.Group();
-        group.add(bank);
-        const rods = [];
-        for (let i = -1; i <= 1; i++) {
-          const cyl = makeMesh(new THREE.CylinderGeometry(0.24, 0.24, 0.65, 14), mats.secondary, mats.edge, bank);
-          cyl.position.set(i * 0.56, 0.72, 0);
-          const head = makeMesh(new THREE.CylinderGeometry(0.18, 0.18, 0.55, 12), mats.primary, mats.edge, bank);
-          head.position.set(i * 0.56, 0.3, 0);
-          const crankGear = buildSpurGear(0.26, 0.18, 8, mats.primary, mats.edge);
-          crankGear.rotation.x = Math.PI / 2;
-          crankGear.position.set(i * 0.56, 0, 0);
-          bank.add(crankGear);
-          rods.push({ head, crankGear, phase: i * 2.1 });
-        }
-        animators.push((t) => {
-          rods.forEach((r) => {
-            r.crankGear.rotation.z = t * 3.0 * dir;
-            r.head.position.y = 0.42 + Math.sin(t * 3.8 + r.phase) * 0.24;
-          });
-        });
-
-      } else if (type === 'gyro') {
-        const outer = makeMesh(new THREE.TorusGeometry(0.98, 0.06, 12, 32), mats.primary, mats.edge, group);
-        const mid = makeMesh(new THREE.TorusGeometry(0.7, 0.055, 12, 28), mats.secondary, mats.edge, group);
-        const core = makeMesh(new THREE.OctahedronGeometry(0.34, 0), mats.primary, mats.edge, group);
-        animators.push((t) => {
-          outer.rotation.y = t * 1.4 * dir;
-          mid.rotation.x = t * 2.1;
-          mid.rotation.z = t * 1.1;
-          core.rotation.y = -t * 2.8;
         });
 
       } else if (type === 'valve') {
-        makeMesh(new THREE.BoxGeometry(1.3, 1.45, 0.42), mats.secondary, mats.edge, group);
-        const jawTop = makeMesh(new THREE.BoxGeometry(0.95, 0.36, 0.5), mats.primary, mats.edge, group);
-        const jawBot = makeMesh(new THREE.BoxGeometry(0.95, 0.36, 0.5), mats.primary, mats.edge, group);
-        animators.push((t) => {
-          const open = 0.22 + Math.abs(Math.sin(t * 2.6)) * 0.32;
-          jawTop.position.y = open;
-          jawBot.position.y = -open;
+        // 2. TERRACOTTA BRIDGE GATEWAY (Twin towers + central arched bridge wall from bottom of Image 1)
+        const gate = new THREE.Group();
+        group.add(gate);
+
+        // Central bridge span
+        const span = addStyledMesh(new THREE.BoxGeometry(2.6, 0.75, 0.42), mainHex, gate, accentEdge);
+        span.position.y = 0.52;
+
+        // Central gable pediment
+        const midRoof = addStyledMesh(new THREE.ConeGeometry(0.85, 0.48, 4), 0xc76747, gate, accentEdge);
+        midRoof.position.set(0, 1.12, 0);
+        midRoof.rotation.y = Math.PI / 4;
+
+        // Left & Right Gatehouse Bastions
+        [-1.15, 1.15].forEach((xPos) => {
+          const tower = addStyledMesh(new THREE.BoxGeometry(0.68, 1.15, 0.62), mainHex, gate, accentEdge);
+          tower.position.set(xPos, 0.58, 0);
+
+          const roof = addStyledMesh(new THREE.ConeGeometry(0.56, 0.52, 4), 0xd48c46, gate, accentEdge);
+          roof.position.set(xPos, 1.42, 0);
+          roof.rotation.y = Math.PI / 4;
         });
 
-      } else if (type === 'drum') {
-        const drum = buildSpurGear(0.84, 0.9, 12, mats.primary, mats.edge);
-        drum.rotation.x = Math.PI / 2;
-        group.add(drum);
+      } else if (type === 'gear') {
+        // 3. ROYAL CRESCENT COLONNADE (Curved pink Georgian facade from Image 2)
+        const crescent = new THREE.Group();
+        group.add(crescent);
+
+        const segCount = 8;
+        for (let i = 0; i < segCount; i++) {
+          const a = -0.75 + (i / (segCount - 1)) * 1.5;
+          const rad = 1.45;
+          const seg = addStyledMesh(new THREE.BoxGeometry(0.42, 0.86, 0.34), mainHex, crescent, accentEdge);
+          seg.position.set(Math.sin(a) * rad, 0.45, Math.cos(a) * rad - 1.1);
+          seg.rotation.y = a;
+
+          const cornice = addStyledMesh(new THREE.BoxGeometry(0.44, 0.12, 0.38), 0xf3d5b5, crescent);
+          cornice.position.set(Math.sin(a) * rad, 0.92, Math.cos(a) * rad - 1.1);
+          cornice.rotation.y = a;
+        }
+
+      } else if (type === 'turbine') {
+        // 4. SKYBEAM ROTUNDA SPIRE (Classical golden spire + tall twin pink sky-beams from Image 2)
+        const spireGroup = new THREE.Group();
+        group.add(spireGroup);
+
+        const baseDrum = addStyledMesh(new THREE.CylinderGeometry(0.58, 0.64, 0.85, 18), 0xc4a468, spireGroup, accentEdge);
+        baseDrum.position.y = 0.42;
+
+        const upperDrum = addStyledMesh(new THREE.CylinderGeometry(0.38, 0.44, 0.72, 16), 0xd6b87c, spireGroup, accentEdge);
+        upperDrum.position.y = 1.15;
+
+        const needle = addStyledMesh(new THREE.ConeGeometry(0.24, 1.15, 12), 0xc4a468, spireGroup);
+        needle.position.y = 2.05;
+
+        // Twin Diagonal Pink Sky-Beams shooting into the sky (from Image 2)
+        const beam1 = addStyledMesh(new THREE.BoxGeometry(0.14, 4.8, 0.14), mainHex, spireGroup);
+        beam1.position.set(0.45, 2.3, 0);
+        beam1.rotation.z = -0.18;
+
+        const beam2 = addStyledMesh(new THREE.BoxGeometry(0.14, 4.8, 0.14), mainHex, spireGroup);
+        beam2.position.set(0.75, 2.3, 0.15);
+        beam2.rotation.z = -0.18;
+
         animators.push((t) => {
-          drum.rotation.z = t * 1.6 * dir;
+          upperDrum.rotation.y = t * 0.8;
+        });
+
+      } else if (type === 'pistons') {
+        // 5. CLASSICAL PORTICO PAVILION (White/Lavender columned mansion from Image 1)
+        const manor = new THREE.Group();
+        group.add(manor);
+
+        const body = addStyledMesh(new THREE.BoxGeometry(1.75, 0.78, 0.95), 0xd8d4e3, manor, accentEdge);
+        body.position.y = 0.42;
+
+        const roof = addStyledMesh(new THREE.BoxGeometry(1.82, 0.12, 1.02), 0xe6be5a, manor);
+        roof.position.y = 0.86;
+
+        // Front portico columns + pediment
+        for (let c = -0.45; c <= 0.45; c += 0.3) {
+          const col = addStyledMesh(new THREE.CylinderGeometry(0.05, 0.05, 0.76, 10), 0xffffff, manor);
+          col.position.set(c, 0.42, 0.55);
+        }
+        const pediment = addStyledMesh(new THREE.ConeGeometry(0.55, 0.32, 4), mainHex, manor, accentEdge);
+        pediment.position.set(0, 0.98, 0.52);
+        pediment.rotation.y = Math.PI / 4;
+
+      } else if (type === 'drum') {
+        // 6. LAVENDER TURRET KEEP (Purple castle with corner turrets from Image 2)
+        const keep = new THREE.Group();
+        group.add(keep);
+
+        const mainBox = addStyledMesh(new THREE.BoxGeometry(1.15, 0.95, 1.15), mainHex, keep, accentEdge);
+        mainBox.position.y = 0.48;
+
+        [
+          [-0.55, -0.55],
+          [0.55, -0.55],
+          [-0.55, 0.55],
+          [0.55, 0.55]
+        ].forEach(([tx, tz]) => {
+          const tur = addStyledMesh(new THREE.CylinderGeometry(0.24, 0.26, 1.28, 14), mainHex, keep, accentEdge);
+          tur.position.set(tx, 0.64, tz);
+
+          const cap = addStyledMesh(new THREE.CylinderGeometry(0.27, 0.27, 0.12, 14), 0xc92a5b, keep);
+          cap.position.set(tx, 1.3, tz);
+        });
+
+      } else if (type === 'conveyor') {
+        // 7. GABLED COTTAGE VILLAGE (Cluster of charming houses with bright red twin chimneys)
+        const village = new THREE.Group();
+        group.add(village);
+
+        const houses = [
+          { x: -0.45, z: 0.15, w: 0.78, h: 0.55, d: 0.68, wall: 0x9e8fb2, roof: mainHex },
+          { x: 0.48,  z: -0.2, w: 0.68, h: 0.68, d: 0.62, wall: 0x8d7ca3, roof: 0xd9a74a }
+        ];
+
+        houses.forEach((h) => {
+          const wMesh = addStyledMesh(new THREE.BoxGeometry(h.w, h.h, h.d), h.wall, village, accentEdge);
+          wMesh.position.set(h.x, h.h / 2, h.z);
+
+          const rMesh = addStyledMesh(new THREE.ConeGeometry(h.w * 0.78, 0.48, 4), h.roof, village, accentEdge);
+          rMesh.position.set(h.x, h.h + 0.22, h.z);
+          rMesh.rotation.y = Math.PI / 4;
+
+          // Iconic bright red twin chimneys (seen throughout both reference artworks)
+          [-0.1, 0.1].forEach((cx) => {
+            const chim = addStyledMesh(new THREE.BoxGeometry(0.09, 0.38, 0.09), 0xc81e1e, village);
+            chim.position.set(h.x + cx, h.h + 0.36, h.z);
+          });
         });
 
       } else {
-        const cams = [];
-        for (let i = -2; i <= 2; i++) {
-          const lobe = makeMesh(new THREE.CylinderGeometry(0.24, 0.24, 0.14, 16), mats.primary, mats.edge, group);
-          lobe.rotation.z = Math.PI / 2;
-          lobe.position.set(i * 0.32, 0, 0);
-          const follower = makeMesh(new THREE.BoxGeometry(0.14, 0.58, 0.14), mats.secondary, mats.edge, group);
-          follower.position.set(i * 0.32, 0.52, 0);
-          cams.push({ lobe, follower, phase: i * 0.9 });
-        }
-        animators.push((t) => {
-          cams.forEach((c) => {
-            const lift = Math.sin(t * 3.5 + c.phase) * 0.18;
-            c.lobe.position.y = lift * 0.5;
-            c.follower.position.y = 0.52 + lift;
-          });
+        // 8. BLOSSOM CANOPY GROVE PAVILION (Stone trilithon + sculptural pink/yellow blossom tree)
+        const grove = new THREE.Group();
+        group.add(grove);
+
+        // Stone trilithon shrine (bottom-left of Image 2)
+        [-0.35, 0.35].forEach((px) => {
+          const pillar = addStyledMesh(new THREE.BoxGeometry(0.16, 0.62, 0.16), 0x7c7287, grove, accentEdge);
+          pillar.position.set(px, 0.31, 0.35);
         });
+        const lintel = addStyledMesh(new THREE.BoxGeometry(0.98, 0.14, 0.55), 0x91869c, grove, accentEdge);
+        lintel.position.set(0, 0.66, 0.35);
+
+        // Sculptural Pink & Chartreuse Blossom Tree
+        const trunk = addStyledMesh(new THREE.CylinderGeometry(0.1, 0.16, 0.9, 8), 0xccb043, grove);
+        trunk.position.set(0, 0.45, -0.25);
+
+        const crown1 = addStyledMesh(new THREE.DodecahedronGeometry(0.68, 1), mainHex, grove);
+        crown1.position.set(0, 1.18, -0.25);
+
+        const crown2 = addStyledMesh(new THREE.DodecahedronGeometry(0.48, 1), 0xd4c635, grove);
+        crown2.position.set(0.38, 1.05, -0.1);
+
+        animators.push((t) => {
+          crown1.rotation.y = t * 0.45;
+        });
+      }
+
+      // Selection halo ring on the lawn when active
+      if (isSelected) {
+        const ring = addStyledMesh(new THREE.RingGeometry(1.15, 1.28, 32), 0xdb2777, group);
+        ring.rotation.x = -Math.PI / 2;
+        ring.position.y = 0.14;
       }
 
       return { group, animators };
@@ -799,62 +1139,102 @@
 
     /**
      * ============================================================================
-     * 7. NON-LINEAR 2D CLUSTER ASSEMBLY (MESHING TRANSFER GEARS + SHAFTS)
+     * 8. FLOATING WORLD ASSEMBLY & WINDING EMERALD RIBBON CONDUITS
      * ============================================================================
      */
-    const machineRoot = new THREE.Group();
-    scene.add(machineRoot);
-
     let activeAnimators = [];
-    let partNodes = []; // { index, group, hitMesh, labelEl }
+    let partNodes = []; // { index, group, hitMesh, labelEl, lineEl, dotEl }
+    let ribbonConnections = []; // { i, j, edgeIdx, tubeMesh, pulseOrb, lastSpread }
+
+    function getPartDescription(part) {
+      if (part.desc && part.desc.trim()) return part.desc.trim();
+      const meta = getPartMetadata(part.type);
+      return meta ? meta.sub : 'System Architecture Component';
+    }
+
+    function createRibbonGeometry(pA, pB, spreadFactor, edgeIdx) {
+      const ax = pA.x * spreadFactor;
+      const az = pA.z * spreadFactor;
+      const bx = pB.x * spreadFactor;
+      const bz = pB.z * spreadFactor;
+      const midX = (ax + bx) / 2;
+      const midZ = (az + bz) / 2;
+      const archHeight = (0.65 + (edgeIdx % 3) * 0.45) * (1 + (spreadFactor - 1) * 0.25);
+      const sway = (edgeIdx % 2 === 0 ? 1 : -1) * 0.45 * spreadFactor;
+
+      const curve = new THREE.CatmullRomCurve3([
+        new THREE.Vector3(ax, 0.35, az),
+        new THREE.Vector3(midX + sway, archHeight, midZ - sway),
+        new THREE.Vector3(bx, 0.35, bz)
+      ]);
+      const geo = new THREE.TubeGeometry(curve, 24, 0.085, 8, false);
+      return { curve, geo };
+    }
 
     function rebuildMachine3D() {
       while (machineRoot.children.length > 0) {
         machineRoot.remove(machineRoot.children[0]);
       }
       labelsLayer.innerHTML = '';
+      calloutsSvg.innerHTML = '';
       activeAnimators = [];
       partNodes = [];
+      ribbonConnections = [];
 
       if (machineParts.length === 0) return;
 
-      const frameMats = createPartMaterials(null, false);
+      const spreadFactor = 1 + diagramProgress * 0.85;
 
-      // 1. Place each component at its (x, z) coordinate
+      // 1. Place each landmark on the floating island (or spread out in diagram mode)
       machineParts.forEach((part, idx) => {
         if (typeof part.x !== 'number' || typeof part.z !== 'number') {
           layoutCluster2D(machineParts);
         }
 
         const isSel = idx === selectedIdx && !isViewerOnly;
-        const mats = createPartMaterials(part.color, isSel);
-        const built = createMechanismMesh(part.type, mats, idx);
+        const meta = getPartMetadata(part.type);
+        const activeColor = part.color || meta.defaultColor;
+        const built = createLandmarkMesh(part.type, activeColor, isSel, idx);
 
-        built.group.position.set(part.x, 0, part.z);
-
-        // Support pedestal to floor
-        const pedestal = makeMesh(new THREE.BoxGeometry(0.75, 0.9, 0.75), frameMats.secondary, frameMats.edge);
-        pedestal.position.set(part.x, -0.95, part.z);
-        machineRoot.add(pedestal);
+        built.group.position.set(part.x * spreadFactor, 0.1, part.z * spreadFactor);
 
         // Invisible hit collider for clicking/dragging
         const hitBox = new THREE.Mesh(
-          new THREE.BoxGeometry(2.1, 2.3, 2.1),
+          new THREE.BoxGeometry(2.2, 2.8, 2.2),
           new THREE.MeshBasicMaterial({ visible: false })
         );
+        hitBox.position.y = 1.1;
         hitBox.userData = { partIndex: idx };
         built.group.add(hitBox);
 
         machineRoot.add(built.group);
         activeAnimators.push(...built.animators);
 
-        // Minimal Floating Tag
+        // SVG Bent Leader Line + Anchor Dot
+        const svgNS = 'http://www.w3.org/2000/svg';
+        const poly = document.createElementNS(svgNS, 'polyline');
+        poly.setAttribute('fill', 'none');
+        poly.setAttribute('stroke', isSel ? '#db2777' : 'rgba(24, 24, 27, 0.42)');
+        poly.setAttribute('stroke-width', isSel ? '1.8' : '1.15');
+        calloutsSvg.appendChild(poly);
+
+        const dot = document.createElementNS(svgNS, 'circle');
+        dot.setAttribute('r', isSel ? '4' : '3');
+        dot.setAttribute('fill', activeColor);
+        dot.setAttribute('stroke', '#ffffff');
+        dot.setAttribute('stroke-width', '1.2');
+        calloutsSvg.appendChild(dot);
+
+        // Perimeter Callout Card with Name + Brief Description
         const tag = document.createElement('div');
-        tag.className = `part-tag ${isSel ? 'selected' : ''}`;
-        const dotColor = part.color || (isDarkPolarity ? '#f0efeb' : '#141413');
+        tag.className = `callout-card ${isSel ? 'selected' : ''}`;
+        const descText = getPartDescription(part);
         tag.innerHTML = `
-          <span class="w-1.5 h-1.5 rounded-full shrink-0" style="background:${dotColor};"></span>
-          <span>${part.name}</span>
+          <div class="flex items-center gap-1.5" style="justify-content: inherit;">
+            <span class="w-2 h-2 rounded-full shrink-0" style="background:${activeColor};"></span>
+            <span class="part-title font-display text-[11px] font-bold leading-tight truncate">${part.name}</span>
+          </div>
+          <div class="part-desc text-[9.5px] leading-snug opacity-80 mt-0.5">${descText}</div>
         `;
         tag.addEventListener('click', (e) => {
           e.stopPropagation();
@@ -867,11 +1247,13 @@
           index: idx,
           group: built.group,
           hitMesh: hitBox,
-          labelEl: tag
+          labelEl: tag,
+          lineEl: poly,
+          dotEl: dot
         });
       });
 
-      // 2. Connect every component in the 2D cluster to its nearest neighbor (Spanning Tree)
+      // 2. Connect landmarks with Swooping Green 3D Ribbon Tubes
       if (machineParts.length > 1) {
         const connected = new Set([0]);
         const edges = [];
@@ -906,40 +1288,36 @@
         edges.forEach(([i, j], edgeIdx) => {
           const pA = machineParts[i];
           const pB = machineParts[j];
-          const dx = pB.x - pA.x;
-          const dz = pB.z - pA.z;
-          const dist = Math.hypot(dx, dz);
+          const dist = Math.hypot(pB.x - pA.x, pB.z - pA.z);
           if (dist < 0.2) return;
 
-          const midX = (pA.x + pB.x) / 2;
-          const midZ = (pA.z + pB.z) / 2;
-          const angle = Math.atan2(dz, dx);
+          const { curve, geo } = createRibbonGeometry(pA, pB, spreadFactor, edgeIdx);
+          const tubeMesh = new THREE.Mesh(geo, matFlat(0x2e943c));
+          tubeMesh.castShadow = true;
+          tubeMesh.receiveShadow = true;
+          machineRoot.add(tubeMesh);
 
-          // Structural lower chassis tie beam
-          const beam = makeMesh(new THREE.BoxGeometry(dist, 0.12, 0.36), frameMats.secondary, frameMats.edge);
-          beam.position.set(midX, -1.15, midZ);
-          beam.rotation.y = -angle;
-          machineRoot.add(beam);
+          const pulseOrb = addStyledMesh(
+            new THREE.SphereGeometry(0.12, 12, 12),
+            0xfde047,
+            machineRoot
+          );
 
-          // Spinning universal coupling shaft between the two units
-          const shaftGroup = new THREE.Group();
-          shaftGroup.position.set(midX, -0.45, midZ);
-          shaftGroup.rotation.y = -angle;
-          machineRoot.add(shaftGroup);
+          const connObj = {
+            i,
+            j,
+            edgeIdx,
+            curve,
+            tubeMesh,
+            pulseOrb,
+            lastSpread: spreadFactor
+          };
+          ribbonConnections.push(connObj);
 
-          const rod = makeMesh(new THREE.CylinderGeometry(0.065, 0.065, dist, 10), frameMats.secondary, frameMats.edge, shaftGroup);
-          rod.rotation.z = Math.PI / 2;
-
-          // Meshing horizontal transfer gear right at the midpoint
-          const idlerRadius = Math.max(0.36, Math.min(0.72, (dist - 1.65) * 0.5));
-          const idlerGear = buildSpurGear(idlerRadius, 0.18, 12, frameMats.primary, frameMats.edge);
-          idlerGear.position.set(midX, -0.85, midZ);
-          machineRoot.add(idlerGear);
-
-          const dir = edgeIdx % 2 === 0 ? -1 : 1;
           activeAnimators.push((t) => {
-            rod.rotation.x = t * 2.4 * dir;
-            idlerGear.rotation.y = t * 2.2 * dir;
+            const u = (t * 0.38 + edgeIdx * 0.27) % 1;
+            const pos = connObj.curve.getPointAt(u);
+            pulseOrb.position.copy(pos);
           });
         });
       }
@@ -947,7 +1325,7 @@
 
     /**
      * ============================================================================
-     * 8. CONTEXTUAL POPUP BUILDER MENU (ON PART CLICK OR FLOOR GRID CLICK)
+     * 9. CONTEXTUAL POPUP BUILDER MENU (ON LANDMARK CLICK OR ISLAND CLICK)
      * ============================================================================
      */
     const partPopup = document.getElementById('part-popup');
@@ -961,10 +1339,10 @@
 
     function positionPopupNear(clientX, clientY) {
       partPopup.classList.remove('hidden');
-      const pw = 360;
-      const ph = 290;
-      const x = Math.max(12, Math.min(window.innerWidth - pw - 12, clientX - pw / 2));
-      const y = Math.max(58, Math.min(window.innerHeight - ph - 12, clientY + 18));
+      const pw = 365;
+      const ph = 300;
+      const x = Math.max(260, Math.min(window.innerWidth - pw - 14, clientX - pw / 2));
+      const y = Math.max(24, Math.min(window.innerHeight - ph - 14, clientY + 16));
       partPopup.style.left = `${x}px`;
       partPopup.style.top = `${y}px`;
     }
@@ -978,9 +1356,13 @@
     }
 
     function openPopupForGridPoint(worldPt, clientX, clientY) {
+      // Clamp within the floating island radius
+      const r = Math.hypot(worldPt.x, worldPt.z);
+      const maxR = 4.6;
+      const scale = r > maxR ? maxR / r : 1;
       pendingGridPoint = {
-        x: Number(Math.max(-9, Math.min(9, worldPt.x)).toFixed(2)),
-        z: Number(Math.max(-9, Math.min(9, worldPt.z)).toFixed(2))
+        x: Number((worldPt.x * scale).toFixed(2)),
+        z: Number((worldPt.z * scale).toFixed(2))
       };
       paletteClickMode = 'append';
       renderPopupContent();
@@ -991,12 +1373,12 @@
       const currentPart = machineParts[selectedIdx] || machineParts[0];
 
       if (paletteClickMode === 'append') {
-        popupBadge.textContent = 'BUILD AT GRID';
+        popupBadge.textContent = 'PLANT ON ISLAND';
         btnModeAppend.classList.add('active');
         btnModeSwap.classList.remove('active');
         partNameInput.value = currentPart ? currentPart.name : 'new-module';
       } else {
-        popupBadge.textContent = `PART 0${selectedIdx + 1}`;
+        popupBadge.textContent = `LANDMARK 0${selectedIdx + 1}`;
         btnModeSwap.classList.add('active');
         btnModeAppend.classList.remove('active');
         if (currentPart) partNameInput.value = currentPart.name;
@@ -1004,7 +1386,7 @@
 
       btnDeletePart.style.display = machineParts.length > 1 ? 'inline-flex' : 'none';
 
-      // Render 8 Pre-Built Moving Parts
+      // Render 8 Architectural Landmarks
       partsGridEl.innerHTML = '';
       MECHANISM_PARTS.forEach((m) => {
         const isCurrent = paletteClickMode === 'swap' && currentPart && currentPart.type === m.type;
@@ -1012,18 +1394,24 @@
         btn.type = 'button';
         btn.className = `part-tile ${isCurrent ? 'active-type' : ''}`;
         btn.innerHTML = `
-          <span class="font-display text-[11px] font-semibold leading-tight">${m.label}</span>
-          <span class="font-mono-tech text-[9px] opacity-70">${m.sub}</span>
+          <div class="flex items-center gap-1.5">
+            <span class="w-2 h-2 rounded-full shrink-0" style="background:${m.defaultColor};"></span>
+            <span class="font-display text-[11px] font-semibold leading-tight">${m.label}</span>
+          </div>
+          <span class="font-mono-tech text-[9px] opacity-75">${m.sub}</span>
         `;
         btn.addEventListener('click', () => {
           if (paletteClickMode === 'swap' && currentPart) {
             currentPart.type = m.type;
+            currentPart.desc = m.sub;
+            if (!currentPart.color) currentPart.color = m.defaultColor;
           } else {
             const newPart = {
               id: 'p_' + Date.now(),
               name: m.label,
+              desc: m.sub,
               type: m.type,
-              color: null,
+              color: m.defaultColor,
               x: pendingGridPoint.x,
               z: pendingGridPoint.z
             };
@@ -1037,7 +1425,7 @@
         partsGridEl.appendChild(btn);
       });
 
-      // Render Optional Color Swatches
+      // Render Vibrant Color Swatches
       swatchRowEl.innerHTML = '';
       OPTIONAL_SWATCHES.forEach((hex) => {
         const sw = document.createElement('button');
@@ -1058,7 +1446,7 @@
       if (machineParts[selectedIdx]) {
         machineParts[selectedIdx].name = e.target.value || 'module';
         if (partNodes[selectedIdx]) {
-          const span = partNodes[selectedIdx].labelEl.querySelector('span:last-child');
+          const span = partNodes[selectedIdx].labelEl.querySelector('.part-title');
           if (span) span.textContent = machineParts[selectedIdx].name;
         }
       }
@@ -1069,8 +1457,8 @@
       if (machineParts[selectedIdx]) {
         const angle = Math.random() * Math.PI * 2;
         pendingGridPoint = {
-          x: Number((machineParts[selectedIdx].x + Math.cos(angle) * 2.8).toFixed(2)),
-          z: Number((machineParts[selectedIdx].z + Math.sin(angle) * 2.8).toFixed(2))
+          x: Number(Math.max(-4.2, Math.min(4.2, machineParts[selectedIdx].x + Math.cos(angle) * 2.2)).toFixed(2)),
+          z: Number(Math.max(-4.2, Math.min(4.2, machineParts[selectedIdx].z + Math.sin(angle) * 2.2)).toFixed(2))
         };
       }
       renderPopupContent();
@@ -1083,7 +1471,8 @@
 
     document.getElementById('btn-color-mono').addEventListener('click', () => {
       if (machineParts[selectedIdx]) {
-        machineParts[selectedIdx].color = null;
+        const meta = getPartMetadata(machineParts[selectedIdx].type);
+        machineParts[selectedIdx].color = meta.defaultColor;
         rebuildMachine3D();
         renderPopupContent();
       }
@@ -1101,15 +1490,20 @@
       partPopup.classList.add('hidden');
     });
 
+    document.getElementById('btn-add-landmark').addEventListener('click', () => {
+      const angle = Math.random() * Math.PI * 2;
+      openPopupForGridPoint({ x: Math.cos(angle) * 2.6, z: Math.sin(angle) * 2.6 }, 340, 180);
+    });
+
     /**
      * ============================================================================
-     * 9. CAMERA ORBIT, PART DRAGGING, & FLOOR GRID CLICK HANDLER
+     * 10. CAMERA ORBIT, LANDMARK DRAGGING, & ISLAND TERRAIN CLICK HANDLER
      * ============================================================================
      */
-    let camTheta = 0.45;
-    let camPhi = 0.88;
-    let camRadius = 14.5;
-    const camTarget = new THREE.Vector3(0, -0.2, 0);
+    let camTheta = 0.32;
+    let camPhi = 1.02;
+    let camRadius = 17.5;
+    const camTarget = new THREE.Vector3(0, 0.55, 0);
 
     const raycaster = new THREE.Raycaster();
     const pointerNDC = new THREE.Vector2();
@@ -1157,14 +1551,20 @@
           const planeHit = raycaster.intersectObject(floorHitPlane);
           if (planeHit.length > 0) {
             const pt = planeHit[0].point;
-            machineParts[draggedPartIdx].x = Number(Math.max(-10, Math.min(10, pt.x)).toFixed(2));
-            machineParts[draggedPartIdx].z = Number(Math.max(-10, Math.min(10, pt.z)).toFixed(2));
+            const spreadFactor = 1 + diagramProgress * 0.85;
+            const rawX = pt.x / spreadFactor;
+            const rawZ = pt.z / spreadFactor;
+            const r = Math.hypot(rawX, rawZ);
+            const maxR = 4.65;
+            const clampScale = r > maxR ? maxR / r : 1;
+            machineParts[draggedPartIdx].x = Number((rawX * clampScale).toFixed(2));
+            machineParts[draggedPartIdx].z = Number((rawZ * clampScale).toFixed(2));
             rebuildMachine3D();
           }
         }
       } else if (isOrbiting) {
         camTheta -= dx * 0.0065;
-        camPhi = Math.max(0.28, Math.min(1.42, camPhi - dy * 0.0055));
+        camPhi = Math.max(0.35, Math.min(1.42, camPhi - dy * 0.0055));
       }
     });
 
@@ -1196,12 +1596,12 @@
 
     wrapper.addEventListener('wheel', (e) => {
       e.preventDefault();
-      camRadius = Math.max(6.5, Math.min(28, camRadius + e.deltaY * 0.012));
+      camRadius = Math.max(9.0, Math.min(28, camRadius + e.deltaY * 0.012));
     }, { passive: false });
 
     /**
      * ============================================================================
-     * 10. TOP BAR CONTROLS (SCRATCH, X-RAY, THEME, VIEWER DOWNLOAD & SHARE)
+     * 11. LEFT SIDEBAR CONTROLS (SCRATCH, DIAGRAM VIEW, DOWNLOAD & SHARE)
      * ============================================================================
      */
     function showToast(msg) {
@@ -1213,47 +1613,48 @@
     }
 
     document.getElementById('btn-clear-scratch').addEventListener('click', () => {
-      machineTitle = 'Custom Machine';
+      machineTitle = 'Custom Floating World';
       document.getElementById('machine-title').textContent = machineTitle;
       machineParts = [
-        { id: 'p_root', name: 'Primary Drive Core', type: 'gear', color: null, x: 0, z: 0 }
+        { id: 'p_root', name: 'Central Sanctuary Citadel', desc: 'Primary core module on the island', type: 'gyro', color: '#d94873', x: 0, z: 0 }
       ];
       selectedIdx = 0;
       rebuildMachine3D();
-      openPopupForPart(0, window.innerWidth / 2, window.innerHeight - 310);
+      openPopupForPart(0, 360, 200);
     });
 
-    const btnWireframe = document.getElementById('btn-wireframe');
-    btnWireframe.addEventListener('click', () => {
-      isWireframe = !isWireframe;
-      btnWireframe.classList.toggle('active', isWireframe);
-      rebuildMachine3D();
-    });
-
-    const btnTheme = document.getElementById('btn-theme');
-    function applyPolarityUI() {
-      document.body.classList.toggle('dark-polarity', isDarkPolarity);
-      btnTheme.classList.toggle('active', isDarkPolarity);
-      btnTheme.textContent = isDarkPolarity ? 'DARK' : 'LIGHT';
-      const bgHex = isDarkPolarity ? 0x0d0d0c : 0xf2f1ed;
-      scene.background.setHex(bgHex);
-      scene.fog.color.setHex(bgHex);
-      rebuildFloor();
-      rebuildMachine3D();
+    const btnDiagramMode = document.getElementById('btn-diagram-mode');
+    function syncDiagramButtonUI() {
+      btnDiagramMode.classList.toggle('active', isDiagramMode);
+      btnDiagramMode.textContent = isDiagramMode ? '← ISLAND WORLD' : 'DIAGRAM VIEW';
     }
 
-    btnTheme.addEventListener('click', () => {
-      isDarkPolarity = !isDarkPolarity;
-      applyPolarityUI();
+    btnDiagramMode.addEventListener('click', () => {
+      isDiagramMode = !isDiagramMode;
+      syncDiagramButtonUI();
     });
 
-    // DOWNLOAD HTML (Viewer-Only Mode: hides +COMPILE, SCRATCH, Tutorial, and Part Builder)
+    function setIslandVisibilityAndFade(alpha) {
+      islandEnvGroup.visible = alpha > 0.01;
+      islandEnvGroup.scale.setScalar(Math.max(0.001, 1 - (1 - alpha) * 0.12));
+      islandEnvGroup.position.y = -(1 - alpha) * 1.3;
+      islandEnvGroup.traverse((child) => {
+        if ((child.isMesh || child.isLineSegments) && child.material) {
+          if (child.userData.baseOpacity === undefined) {
+            child.userData.baseOpacity = child.material.opacity !== undefined ? child.material.opacity : 1.0;
+          }
+          child.material.transparent = alpha < 0.999 || child.userData.baseOpacity < 1.0;
+          child.material.opacity = child.userData.baseOpacity * alpha;
+        }
+      });
+    }
+
+    // DOWNLOAD HTML (Viewer-Only Mode)
     document.getElementById('btn-download-html').addEventListener('click', () => {
       const exportPayload = {
         title: machineTitle,
         parts: machineParts,
-        dark: isDarkPolarity,
-        xray: isWireframe,
+        diagram: isDiagramMode,
         viewerOnly: true
       };
       let htmlSource = document.documentElement.outerHTML;
@@ -1264,22 +1665,21 @@
       const url = URL.createObjectURL(blob);
       const a = document.createElement('a');
       a.href = url;
-      a.download = `${machineTitle.toLowerCase().replace(/[^a-z0-9]+/g, '-')}-machine.html`;
+      a.download = `${machineTitle.toLowerCase().replace(/[^a-z0-9]+/g, '-')}-world.html`;
       document.body.appendChild(a);
       a.click();
       document.body.removeChild(a);
       URL.revokeObjectURL(url);
-      showToast('DOWNLOADED VIEWER-ONLY HTML');
+      showToast('DOWNLOADED STANDALONE 3D WORLD HTML');
     });
 
     // SHARE LINK (Compressed URL with viewerOnly flag `v: 1`)
     document.getElementById('btn-share-link').addEventListener('click', async () => {
       const compact = {
         t: machineTitle,
-        d: isDarkPolarity ? 1 : 0,
-        x: isWireframe ? 1 : 0,
+        g: isDiagramMode ? 1 : 0,
         v: 1,
-        p: machineParts.map(p => [p.name, p.type, p.color || 0, p.x, p.z])
+        p: machineParts.map(p => [p.name, p.type, p.color || 0, p.x, p.z, p.desc || ''])
       };
       const token = await compressToUrlHash(compact);
       const shareUrl = `${window.location.origin}${window.location.pathname}#m=${token}`;
@@ -1291,12 +1691,12 @@
       document.execCommand('copy');
       document.body.removeChild(tempInput);
 
-      showToast('VIEWER SHARE LINK COPIED TO CLIPBOARD');
+      showToast('FLOATING WORLD SHARE LINK COPIED');
     });
 
     /**
      * ============================================================================
-     * 11. AUTO-COMPILER MODAL (PARSE PDF OR SPEC INTO ACTUAL PROJECT PARTS)
+     * 12. AUTO-COMPILER MODAL (TURN ANY PROJECT PDF OR SPEC INTO A FLOATING WORLD)
      * ============================================================================
      */
     const compilerModal = document.getElementById('compiler-modal');
@@ -1343,38 +1743,188 @@
 
     function inferTypeFromText(line, idx) {
       const s = line.toLowerCase();
-      if (s.includes('auth') || s.includes('jwt') || s.includes('gate') || s.includes('lock')) return 'valve';
-      if (s.includes('loop') || s.includes('core') || s.includes('kernel') || s.includes('orchestrator') || s.includes('agent')) return 'gyro';
-      if (s.includes('llm') || s.includes('gpt') || s.includes('model') || s.includes('inference') || s.includes('router')) return 'turbine';
-      if (s.includes('tool') || s.includes('embedded') || s.includes('database') || s.includes('piston') || s.includes('search') || s.includes('index')) return 'pistons';
-      if (s.includes('stream') || s.includes('sse') || s.includes('conveyor') || s.includes('ingest') || s.includes('event')) return 'conveyor';
-      if (s.includes('sandbox') || s.includes('wal') || s.includes('ring') || s.includes('store') || s.includes('runtime')) return 'drum';
-      if (s.includes('hash') || s.includes('clock') || s.includes('sync') || s.includes('cam')) return 'cam';
+      if (s.includes('auth') || s.includes('jwt') || s.includes('gate') || s.includes('lock') || s.includes('preserve') || s.includes('repository')) return 'valve';
+      if (s.includes('loop') || s.includes('core') || s.includes('kernel') || s.includes('orchestrator') || s.includes('agent') || s.includes('archive') || s.includes('living')) return 'gyro';
+      if (s.includes('llm') || s.includes('gpt') || s.includes('model') || s.includes('inference') || s.includes('router') || s.includes('performance') || s.includes('thinking')) return 'turbine';
+      if (s.includes('tool') || s.includes('embedded') || s.includes('database') || s.includes('piston') || s.includes('search') || s.includes('index') || s.includes('classroom') || s.includes('steam') || s.includes('stem') || s.includes('bauhaus')) return 'pistons';
+      if (s.includes('stream') || s.includes('sse') || s.includes('conveyor') || s.includes('ingest') || s.includes('event') || s.includes('family') || s.includes('children') || s.includes('project')) return 'conveyor';
+      if (s.includes('sandbox') || s.includes('wal') || s.includes('ring') || s.includes('store') || s.includes('runtime') || s.includes('digitize') || s.includes('documentation')) return 'drum';
+      if (s.includes('hash') || s.includes('clock') || s.includes('sync') || s.includes('motor') || s.includes('therapy') || s.includes('mapping') || s.includes('pattern')) return 'cam';
+      if (s.includes('methodology') || s.includes('intellectual') || s.includes('creative')) return 'gear';
       return MECHANISM_PARTS[idx % MECHANISM_PARTS.length].type;
     }
 
-    document.getElementById('btn-run-compile').addEventListener('click', () => {
-      const raw = compileSpecInput.value.trim();
-      if (!raw) return;
+    // Intelligent prose + bullet parser so freeform paragraphs always turn into 5-8 meaningful landmarks
+    function parseProseOrBulletsToComponents(rawText) {
+      const STOP_WORDS = new Set([
+        'i', 'am', 'going', 'to', 'create', 'a', 'an', 'the', 'that', 'gives', 'it', 'will', 'be',
+        'both', 'for', 'their', 'and', 'but', 'also', 'way', 'how', 'they', 'make', 'things',
+        'part', 'two', 'is', 'into', 'such', 'as', 'or', 'this', 'one', 'on', 'of', 'in', 'with',
+        'by', 'from', 'at', 'which', 'are', 'was', 'were', 'have', 'has', 'had', 'can', 'could',
+        'would', 'should', 'our', 'we', 'us', 'your', 'you', 'them', 'these', 'those', 'over', 'time'
+      ]);
 
-      const lines = raw
+      // 1. Check if the user provided explicit short bullet lines
+      const rawLines = rawText
         .split(/\n+/)
         .map(l => l.replace(/^[-*•\d.)\s]+/, '').trim())
-        .filter(l => l.length >= 3 && l.length <= 95);
+        .filter(Boolean);
 
-      const chosen = lines.slice(0, 8);
-      if (chosen.length === 0) return;
+      let segments = [];
+      if (rawLines.length >= 3 && rawLines.every(l => l.length <= 130)) {
+        segments = rawLines;
+      } else {
+        // 2. Otherwise split natural prose paragraphs on sentence boundaries and major conjunction clauses
+        segments = rawText
+          .replace(/\.\.+/g, '. ')
+          .split(/(?:\.\s+|\n+|;\s+|\b(?:but it will also|that will|which will|The part two is that|focused on|and it will integrate|both a)\b)/i)
+          .map(s => s.replace(/^[-*•\d.)\s,]+/, '').trim())
+          .filter(s => s.length >= 10);
 
-      machineTitle = compileTitleInput.value.trim() || 'Compiled System';
+        // If still fewer than 4 segments, split long clauses on "and" / commas
+        if (segments.length < 4) {
+          segments = rawText
+            .split(/(?:[.;\n]+|,\s+|\band\b)/i)
+            .map(s => s.trim())
+            .filter(s => s.length >= 10);
+        }
+      }
+
+      const chosen = segments.slice(0, 8);
+      return chosen.map((seg, idx) => {
+        const lType = inferTypeFromText(seg, idx);
+        const meta = getPartMetadata(lType);
+
+        // If the segment uses "Title: Description" format, respect it
+        const colonMatch = seg.match(/^([^:–—-]{3,34})\s*[:–—-]\s*(.+)$/);
+        if (colonMatch) {
+          return {
+            name: colonMatch[1].trim(),
+            desc: colonMatch[2].trim().slice(0, 68),
+            type: lType
+          };
+        }
+
+        // Extract key content words for a clean architectural landmark title
+        const words = seg
+          .replace(/[^a-zA-Z0-9\s/-]/g, ' ')
+          .split(/\s+/)
+          .filter(w => w.length > 2 && !STOP_WORDS.has(w.toLowerCase()));
+
+        const titleWords = (words.length >= 2 ? words.slice(0, 3) : seg.split(/\s+/).slice(0, 3))
+          .map(w => w.charAt(0).toUpperCase() + w.slice(1));
+
+        const cleanName = titleWords.join(' ').slice(0, 30) || `Landmark 0${idx + 1}`;
+        const cleanDesc = seg.length > 68 ? seg.slice(0, 65).trim() + '...' : seg;
+
+        return {
+          name: cleanName,
+          desc: cleanDesc || meta.sub,
+          type: lType
+        };
+      });
+    }
+
+    async function extractComponentsWithAI(rawText, fallbackTitle) {
+      const apiKey = "";
+      const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-3-flash-preview:generateContent?key=${apiKey}`;
+      const payload = {
+        contents: [{
+          role: "user",
+          parts: [{
+            text: `Turn the following project description or architecture notes into 6 to 7 distinct components for an interactive 3D world diagram.\n\nProject Text:\n${rawText}`
+          }]
+        }],
+        systemInstruction: {
+          parts: [{
+            text: "You are a systems & concept architect. Extract a concise project title (2-4 words) and 6-7 core components from any prose description, idea pitch, or technical spec. Each component needs a short 'name' (2-4 words, max 28 chars), a concise 'desc' (max 62 chars explaining its role), and a 'type' chosen from: ['gyro','valve','gear','turbine','pistons','drum','conveyor','cam']."
+          }]
+        },
+        generationConfig: {
+          responseMimeType: "application/json",
+          responseSchema: {
+            type: "OBJECT",
+            properties: {
+              title: { type: "STRING" },
+              components: {
+                type: "ARRAY",
+                items: {
+                  type: "OBJECT",
+                  properties: {
+                    name: { type: "STRING" },
+                    desc: { type: "STRING" },
+                    type: { type: "STRING" }
+                  },
+                  propertyOrdering: ["name", "desc", "type"]
+                }
+              }
+            },
+            propertyOrdering: ["title", "components"]
+          }
+        }
+      };
+
+      const res = await fetch(apiUrl, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload)
+      });
+      if (!res.ok) throw new Error('API request failed');
+      const data = await res.json();
+      const jsonText = data?.candidates?.[0]?.content?.parts?.[0]?.text;
+      if (!jsonText) throw new Error('Empty AI response');
+      return JSON.parse(jsonText);
+    }
+
+    const btnRunCompile = document.getElementById('btn-run-compile');
+    btnRunCompile.addEventListener('click', async () => {
+      const raw = compileSpecInput.value.trim();
+      if (!raw) {
+        showToast('PASTE SOME PROJECT TEXT OR UPLOAD A FILE FIRST');
+        return;
+      }
+
+      const originalBtnLabel = btnRunCompile.textContent;
+      btnRunCompile.textContent = 'BUILDING WORLD...';
+      btnRunCompile.disabled = true;
+      compileStatus.textContent = 'ANALYZING PROJECT...';
+
+      let extractedTitle = compileTitleInput.value.trim();
+      let parsedItems = [];
+
+      try {
+        const aiResult = await extractComponentsWithAI(raw, extractedTitle);
+        if (aiResult && Array.isArray(aiResult.components) && aiResult.components.length > 0) {
+          if (!extractedTitle && aiResult.title) extractedTitle = aiResult.title;
+          parsedItems = aiResult.components.slice(0, 8);
+        }
+      } catch (e) {
+        // Fallback to deterministic prose + clause splitter immediately if offline or blocked
+        parsedItems = parseProseOrBulletsToComponents(raw);
+      }
+
+      if (!parsedItems || parsedItems.length === 0) {
+        parsedItems = parseProseOrBulletsToComponents(raw);
+      }
+
+      if (!extractedTitle && parsedItems.length > 0) {
+        extractedTitle = parsedItems[0].name;
+      }
+
+      machineTitle = extractedTitle || 'Living World';
       document.getElementById('machine-title').textContent = machineTitle;
 
-      machineParts = chosen.map((line, idx) => {
-        const cleanName = line.split(/[:—–-]/)[0].trim().slice(0, 32);
+      machineParts = parsedItems.map((item, idx) => {
+        const validType = MECHANISM_PARTS.some(m => m.type === item.type)
+          ? item.type
+          : inferTypeFromText(`${item.name} ${item.desc}`, idx);
+        const meta = getPartMetadata(validType);
         return {
-          id: 'p_comp_' + idx,
-          name: cleanName || `module-${idx + 1}`,
-          type: inferTypeFromText(line, idx),
-          color: null,
+          id: 'p_comp_' + idx + '_' + Date.now(),
+          name: (item.name || `Landmark 0${idx + 1}`).slice(0, 32),
+          desc: (item.desc || meta.sub).slice(0, 68),
+          type: validType,
+          color: meta.defaultColor,
           x: 0,
           z: 0
         };
@@ -1383,45 +1933,51 @@
       layoutCluster2D(machineParts);
       selectedIdx = 0;
       rebuildMachine3D();
+
+      btnRunCompile.textContent = originalBtnLabel;
+      btnRunCompile.disabled = false;
+      compileStatus.textContent = 'READY';
+
       compilerModal.classList.add('hidden');
       compilerModal.classList.remove('flex');
+      showToast(`GENERATED "${machineTitle.toUpperCase()}" (${machineParts.length} LANDMARKS)`);
     });
 
     /**
      * ============================================================================
-     * 12. SINGLE-WINDOW SPOTLIGHT TUTORIAL (FIRST-TIME VISIT ONLY)
+     * 13. SINGLE-WINDOW SPOTLIGHT TUTORIAL (POSITIONED NEXT TO LEFT DOCK)
      * ============================================================================
      */
     const TUTORIAL_STEPS = [
       {
         targetId: 'brand-chip',
-        title: 'Click Parts or the Floor Grid',
-        body: 'Click any spinning 3D part to swap its mechanism, recolor it, or drag it across the floor. Click any empty spot on the floor grid to pop up the part menu and add a new meshing unit.',
-        pos: { top: '54px', left: '14px', right: 'auto' }
+        title: 'Explore Your Floating World',
+        body: 'Each component of your project lives as a colorful 3D architectural landmark on a floating island, linked by winding emerald ribbon conduits. Click any structure or spot on the lawn to customize it.',
+        pos: { top: '16px', left: '264px' }
       },
       {
         targetId: 'btn-open-compiler',
-        title: '+ COMPILE Spec or PDF',
-        body: 'Upload a technical brief PDF or paste system architecture notes to automatically compile your project into an interlocking 3D machine.',
-        pos: { top: '54px', left: '160px', right: 'auto' }
+        title: '+ Turn Any Project Into a World',
+        body: 'Upload a technical PDF or paste architecture notes to automatically transform any software system or resume into a vibrant floating 3D island.',
+        pos: { top: '125px', left: '264px' }
       },
       {
         targetId: 'btn-clear-scratch',
-        title: 'SCRATCH Builder',
-        body: 'Clear the canvas down to a single central drive gear so you can assemble a custom kinetic machine from scratch.',
-        pos: { top: '54px', left: '245px', right: 'auto' }
+        title: 'Scratch & + Landmark',
+        body: 'Clear the island to build your own world from scratch, or plant new viaducts, castles, cottages, and spires anywhere on the green terrain.',
+        pos: { top: '168px', left: '264px' }
       },
       {
-        targetId: 'btn-wireframe',
-        title: 'X-Ray & Dark Mode Defaults',
-        body: 'X-Ray blueprint and Dark Mode are active by default. Click X-RAY or DARK/LIGHT anytime to switch to solid CAD shading or Studio Light mode.',
-        pos: { top: '54px', left: 'auto', right: '140px' }
+        targetId: 'btn-diagram-mode',
+        title: 'Animated Diagram View',
+        body: 'Fade away the floating island and spread the landmarks outward into a clean architectural diagram. Toggle again to animate back to the island.',
+        pos: { top: '225px', left: '264px' }
       },
       {
         targetId: 'btn-share-link',
-        title: '↓ DOWNLOAD & ⇄ SHARE LINK',
-        body: 'Export a standalone HTML file or copy a compressed URL. Both open in a clean, read-only viewer without builder buttons or this tutorial.',
-        pos: { top: '54px', left: 'auto', right: '14px' }
+        title: '↓ Download & ⇄ Share World',
+        body: 'Export a standalone HTML file or copy a compressed share link. Both open in a clean, viewer-only mode without editing menus.',
+        pos: { top: '268px', left: '264px' }
       }
     ];
 
@@ -1435,13 +1991,13 @@
     const btnTutorialNext = document.getElementById('btn-tutorial-next');
 
     function hasSeenTutorial() {
-      return document.cookie.includes('km_tour_done=1') || window.name.includes('km_tour_done');
+      return document.cookie.includes('fw_tour_done=1') || window.name.includes('fw_tour_done');
     }
 
     function markTutorialSeen() {
-      document.cookie = 'km_tour_done=1; path=/; max-age=31536000; SameSite=Lax';
-      if (!window.name.includes('km_tour_done')) {
-        window.name += '|km_tour_done';
+      document.cookie = 'fw_tour_done=1; path=/; max-age=31536000; SameSite=Lax';
+      if (!window.name.includes('fw_tour_done')) {
+        window.name += '|fw_tour_done';
       }
     }
 
@@ -1465,23 +2021,20 @@
       tutorialTitleEl.textContent = step.title;
       tutorialBodyEl.textContent = step.body;
 
-      // Position single floating window near the highlighted button
+      const leftPx = Math.min(window.innerWidth - 335, parseInt(step.pos.left, 10) || 264);
       tutorialWindowEl.style.top = step.pos.top;
-      tutorialWindowEl.style.left = step.pos.left;
-      tutorialWindowEl.style.right = step.pos.right;
+      tutorialWindowEl.style.left = `${Math.max(12, leftPx)}px`;
 
-      // Light up target button
       const targetEl = document.getElementById(step.targetId);
       if (targetEl) {
         targetEl.classList.add('tutorial-highlight');
       }
 
-      // Render progress dots
       tutorialDotsEl.innerHTML = '';
       TUTORIAL_STEPS.forEach((_, idx) => {
         const dot = document.createElement('span');
         dot.className = 'w-1.5 h-1.5 rounded-full transition-all';
-        dot.style.background = idx === tutorialStepIndex ? 'var(--text-primary)' : 'var(--border-hairline)';
+        dot.style.background = idx === tutorialStepIndex ? 'var(--accent-active)' : 'var(--border-hairline)';
         tutorialDotsEl.appendChild(dot);
       });
 
@@ -1519,41 +2072,176 @@
 
     /**
      * ============================================================================
-     * 13. ANIMATION LOOP & LABEL PROJECTION
+     * 14. ANIMATION LOOP (LEVITATING ISLAND, DIAGRAM SPREAD, & BENT LEADER LINES)
      * ============================================================================
      */
     const clock = new THREE.Clock();
     const projVec = new THREE.Vector3();
+    const centerProj = new THREE.Vector3();
 
     function updateLabels() {
       const w = window.innerWidth;
       const h = window.innerHeight;
+
+      // Project the island center onto the 2D screen
+      worldFloatGroup.getWorldPosition(centerProj);
+      centerProj.y += 0.8;
+      centerProj.project(camera);
+      const cx = (centerProj.x * 0.5 + 0.5) * w;
+      const cy = (-(centerProj.y * 0.5) + 0.5) * h;
+
+      // Perimeter ring radii (kept clear of the left sidebar dock and outside the island)
+      const rx = Math.min(w * 0.31, 315) * (1 + diagramProgress * 0.16);
+      const ry = Math.min(h * 0.37, 255) * (1 + diagramProgress * 0.12);
+
+      const leftGroup = [];
+      const rightGroup = [];
+
       partNodes.forEach((node) => {
         node.group.getWorldPosition(projVec);
-        projVec.y += 1.45;
+        projVec.y += 1.05;
         projVec.project(camera);
 
         if (projVec.z > 1) {
           node.labelEl.style.display = 'none';
+          node.lineEl.style.display = 'none';
+          node.dotEl.style.display = 'none';
           return;
         }
-        node.labelEl.style.display = 'inline-flex';
-        const x = Math.max(54, Math.min(w - 54, (projVec.x * 0.5 + 0.5) * w));
-        const y = Math.max(50, Math.min(h - 30, (-(projVec.y * 0.5) + 0.5) * h));
-        node.labelEl.style.left = `${x}px`;
-        node.labelEl.style.top = `${y}px`;
+
+        node.labelEl.style.display = 'block';
+        node.lineEl.style.display = 'block';
+        node.dotEl.style.display = 'block';
+
+        const sx = (projVec.x * 0.5 + 0.5) * w;
+        const sy = (-(projVec.y * 0.5) + 0.5) * h;
+
+        const item = { node, sx, sy };
+        if (sx < cx - 8) {
+          leftGroup.push(item);
+        } else {
+          rightGroup.push(item);
+        }
       });
+
+      function layoutSideCallouts(items, isRight) {
+        if (items.length === 0) return;
+        items.sort((a, b) => a.sy - b.sy);
+
+        // Evenly distribute vertical slots outside the island so callouts never overlap
+        const minGap = 58;
+        const ys = items.map((it) => {
+          const dy = it.sy - cy;
+          return cy + dy * 1.18;
+        });
+
+        for (let pass = 0; pass < 4; pass++) {
+          for (let i = 1; i < ys.length; i++) {
+            if (ys[i] - ys[i - 1] < minGap) {
+              const mid = (ys[i] + ys[i - 1]) * 0.5;
+              ys[i - 1] = mid - minGap * 0.5;
+              ys[i] = mid + minGap * 0.5;
+            }
+          }
+        }
+
+        const topLimit = 46;
+        const botLimit = h - 46;
+        if (ys[0] < topLimit) {
+          const shift = topLimit - ys[0];
+          for (let i = 0; i < ys.length; i++) ys[i] += shift;
+        }
+        if (ys[ys.length - 1] > botLimit) {
+          const shift = ys[ys.length - 1] - botLimit;
+          for (let i = 0; i < ys.length; i++) ys[i] -= shift;
+        }
+
+        items.forEach((it, idx) => {
+          const targetY = Math.max(topLimit, Math.min(botLimit, ys[idx]));
+          const normY = Math.max(-0.92, Math.min(0.92, (targetY - cy) / Math.max(120, ry)));
+          const arcFactor = Math.sqrt(Math.max(0.18, 1 - normY * normY * 0.65));
+
+          let elbowX;
+          let labelX;
+          if (isRight) {
+            elbowX = Math.max(it.sx + 28, cx + rx * arcFactor);
+            elbowX = Math.min(w - 235, elbowX);
+            labelX = elbowX + 22;
+          } else {
+            elbowX = Math.min(it.sx - 28, cx - rx * arcFactor);
+            // Leave room on the left so labels don't collide with the sidebar dock
+            elbowX = Math.max(255, elbowX);
+            labelX = elbowX - 22;
+          }
+
+          // Bent two-segment architectural callout line: (sx, sy) -> (elbowX, targetY) -> (labelX, targetY)
+          it.node.lineEl.setAttribute(
+            'points',
+            `${it.sx.toFixed(1)},${it.sy.toFixed(1)} ${elbowX.toFixed(1)},${targetY.toFixed(1)} ${labelX.toFixed(1)},${targetY.toFixed(1)}`
+          );
+          it.node.dotEl.setAttribute('cx', it.sx.toFixed(1));
+          it.node.dotEl.setAttribute('cy', it.sy.toFixed(1));
+
+          it.node.labelEl.classList.toggle('side-right', isRight);
+          it.node.labelEl.classList.toggle('side-left', !isRight);
+          it.node.labelEl.style.left = `${labelX.toFixed(1)}px`;
+          it.node.labelEl.style.top = `${targetY.toFixed(1)}px`;
+        });
+      }
+
+      layoutSideCallouts(leftGroup, false);
+      layoutSideCallouts(rightGroup, true);
     }
 
     function animate() {
       requestAnimationFrame(animate);
       const elapsed = clock.getElapsedTime();
 
+      // Smoothly animate transition between Island World (0) and Spread Diagram View (1)
+      const targetDiag = isDiagramMode ? 1 : 0;
+      const diffDiag = targetDiag - diagramProgress;
+      if (Math.abs(diffDiag) > 0.0005) {
+        diagramProgress += diffDiag * 0.085;
+        if (Math.abs(targetDiag - diagramProgress) <= 0.0005) {
+          diagramProgress = targetDiag;
+        }
+
+        const spreadFactor = 1 + diagramProgress * 0.85;
+        setIslandVisibilityAndFade(1 - diagramProgress);
+
+        // Spread or contract landmarks smoothly
+        partNodes.forEach((node) => {
+          const p = machineParts[node.index];
+          if (p) {
+            node.group.position.set(p.x * spreadFactor, 0.1, p.z * spreadFactor);
+          }
+        });
+
+        // Update green connecting ribbons to follow the spreading landmarks
+        ribbonConnections.forEach((conn) => {
+          const pA = machineParts[conn.i];
+          const pB = machineParts[conn.j];
+          if (!pA || !pB) return;
+          const { curve, geo } = createRibbonGeometry(pA, pB, spreadFactor, conn.edgeIdx);
+          conn.tubeMesh.geometry.dispose();
+          conn.tubeMesh.geometry = geo;
+          conn.curve = curve;
+        });
+      }
+
+      // Gentle levitation of the entire floating world in the center of the screen
+      worldFloatGroup.position.y = Math.sin(elapsed * 1.15) * 0.16 * (1 - diagramProgress * 0.5);
+      if (!isOrbiting && !isDraggingPart) {
+        camTheta += 0.0007;
+      }
+
+      envAnimators.forEach(fn => fn(elapsed));
       activeAnimators.forEach(fn => fn(elapsed));
 
-      camera.position.x = camTarget.x + camRadius * Math.sin(camPhi) * Math.sin(camTheta);
-      camera.position.y = camTarget.y + camRadius * Math.cos(camPhi);
-      camera.position.z = camTarget.z + camRadius * Math.sin(camPhi) * Math.cos(camTheta);
+      const effectiveRadius = camRadius * (1 + diagramProgress * 0.18);
+      camera.position.x = camTarget.x + effectiveRadius * Math.sin(camPhi) * Math.sin(camTheta);
+      camera.position.y = camTarget.y + effectiveRadius * Math.cos(camPhi);
+      camera.position.z = camTarget.z + effectiveRadius * Math.sin(camPhi) * Math.cos(camTheta);
       camera.lookAt(camTarget);
 
       renderer.render(scene, camera);
@@ -1568,13 +2256,12 @@
 
     window.onload = async function () {
       await hydrateInitialState();
-      applyPolarityUI();
-      btnWireframe.classList.toggle('active', isWireframe);
-      rebuildFloor();
+      syncDiagramButtonUI();
+      rebuildFloatingIslandBase();
+      setIslandVisibilityAndFade(1 - diagramProgress);
       rebuildMachine3D();
       requestAnimationFrame(animate);
 
-      // Show the single-window spotlight tutorial on first open (never in viewer-only download/share mode)
       if (!isViewerOnly && !hasSeenTutorial()) {
         setTimeout(() => {
           tutorialStepIndex = 0;
