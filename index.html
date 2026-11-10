@@ -114,7 +114,8 @@
       cursor: grabbing;
     }
 
-    /* Perimeter Architectural Callout Labels (connected via SVG elbow leader lines) */
+    /* Perimeter Architectural Callout Labels (connected via SVG elbow leader lines)
+       & Colorful Schematic Diagram Cards in Diagram Mode */
     .callout-card {
       position: absolute;
       pointer-events: auto;
@@ -127,7 +128,7 @@
       max-width: 215px;
       box-shadow: 0 4px 14px rgba(0, 0, 0, 0.06);
       backdrop-filter: blur(8px);
-      transition: border-color 0.15s ease, background-color 0.15s ease, box-shadow 0.15s ease;
+      transition: border-color 0.18s ease, background-color 0.18s ease, box-shadow 0.18s ease, padding 0.22s ease, min-width 0.22s ease, max-width 0.22s ease;
     }
 
     .callout-card.side-left {
@@ -141,7 +142,7 @@
     }
 
     .callout-card:hover {
-      border-color: var(--border-strong);
+      border-color: var(--part-color, var(--border-strong));
       z-index: 35;
     }
 
@@ -151,6 +152,244 @@
       border-color: var(--accent-active);
       z-index: 40;
       box-shadow: 0 6px 20px rgba(219, 39, 119, 0.28);
+    }
+
+    /* Diagram Mode Backdrop & Colorful SVG Schematic Layer */
+    #diagram-backdrop {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      z-index: 4;
+      opacity: 0;
+      transition: opacity 0.45s cubic-bezier(0.22, 1, 0.36, 1);
+      background-image:
+        radial-gradient(circle at 55% 50%, rgba(219, 39, 119, 0.05) 0%, rgba(57, 156, 71, 0.04) 45%, transparent 75%),
+        radial-gradient(rgba(219, 39, 119, 0.22) 1px, transparent 1px);
+      background-size: 100% 100%, 24px 24px;
+    }
+
+    body.diagram-mode #diagram-backdrop {
+      opacity: 1;
+    }
+
+    #diagram-svg-layer {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 12;
+      opacity: 0;
+      transition: opacity 0.35s ease;
+      overflow: visible;
+    }
+
+    body.diagram-mode #diagram-svg-layer {
+      opacity: 1;
+    }
+
+    body.diagram-mode #webgl-canvas {
+      position: relative;
+      z-index: 30;
+      pointer-events: none;
+    }
+
+    /* Diagram Card sub-elements (hidden in 3D Island World mode, revealed in Diagram mode) */
+    .callout-card .diagram-type-badge,
+    .callout-card .diagram-step-num,
+    .callout-card .diagram-card-body,
+    .callout-card .diagram-card-footer {
+      display: none;
+    }
+
+    .callout-card .diagram-part-3d-slot {
+      width: 60px;
+      height: 60px;
+      flex-shrink: 0;
+      border-radius: 7px;
+      border: 1.5px dashed var(--part-color, var(--border-hairline));
+      background: var(--part-tint, rgba(219, 39, 119, 0.06));
+      display: none;
+      position: relative;
+    }
+
+    body.diagram-mode .callout-card {
+      transform: translate(-50%, -50%) !important;
+      text-align: left !important;
+      min-width: 244px;
+      max-width: 264px;
+      padding: 9px 11px;
+      border-radius: 11px;
+      background: var(--bg-card);
+      color: var(--text-primary);
+      border: 1.5px solid var(--part-border, rgba(219, 39, 119, 0.32));
+       border-top: 3.5px solid var(--part-color, #db2777);
+      box-shadow: 0 10px 26px -8px rgba(24, 24, 27, 0.12), 0 2px 10px -2px var(--part-tint, rgba(219, 39, 119, 0.14));
+      cursor: grab;
+    }
+
+    body.diagram-mode .callout-card:active {
+      cursor: grabbing;
+    }
+
+    body.diagram-mode .callout-card.selected {
+      background: var(--bg-card);
+      color: var(--text-primary);
+      border-color: var(--part-color, #db2777);
+      border-top: 3.5px solid var(--part-color, #db2777);
+      box-shadow: 0 12px 30px -6px var(--part-glow, rgba(219, 39, 119, 0.32)), 0 0 0 2px var(--part-color, #db2777);
+    }
+
+    body.diagram-mode .callout-card .world-desc {
+      display: none;
+    }
+
+    body.diagram-mode .callout-card .part-card-header {
+      justify-content: space-between !important;
+      width: 100%;
+    }
+
+    body.diagram-mode .callout-card .diagram-step-num {
+      display: inline-block;
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 9px;
+      font-weight: 600;
+      color: var(--part-color, #db2777);
+    }
+
+    body.diagram-mode .callout-card .diagram-type-badge {
+      display: inline-block;
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 8px;
+      font-weight: 600;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      padding: 1.5px 5px;
+      border-radius: 4px;
+      background: var(--part-tint, rgba(219, 39, 119, 0.12));
+      color: var(--part-color, #db2777);
+      border: 1px solid var(--part-border, rgba(219, 39, 119, 0.28));
+      flex-shrink: 0;
+    }
+
+    body.diagram-mode .callout-card .diagram-card-body {
+      display: flex;
+      align-items: stretch;
+      gap: 8px;
+      margin-top: 7px;
+      padding-top: 7px;
+      border-top: 1px solid var(--border-hairline);
+    }
+
+    body.diagram-mode .callout-card .diagram-part-3d-slot {
+      display: block;
+    }
+
+    body.diagram-mode .callout-card .diagram-part-notes {
+      flex: 1;
+      min-width: 0;
+      height: 60px;
+      resize: none;
+      border-radius: 6px;
+      border: 1px solid var(--border-hairline);
+      background: var(--bg-primary);
+      color: var(--text-secondary);
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 9.5px;
+      line-height: 1.38;
+      padding: 4px 6px;
+      user-select: text;
+      -webkit-user-select: text;
+      cursor: text;
+    }
+
+    body.diagram-mode .callout-card .diagram-part-notes:focus {
+      outline: none;
+      border-color: var(--part-color, #db2777);
+      color: var(--text-primary);
+    }
+
+    body.diagram-mode .callout-card .diagram-card-footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-top: 6px;
+      padding-top: 4px;
+      border-top: 1px dashed var(--border-hairline);
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 8.5px;
+      color: var(--text-muted);
+      letter-spacing: 0.04em;
+    }
+
+    /* Colorful Mode Toggle Switch (WORLD <-> DIAGRAM) */
+    .cad-mode-switch {
+      border: 1px solid var(--border-hairline);
+      background: var(--bg-card);
+      color: var(--text-primary);
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 10px;
+      font-weight: 500;
+      letter-spacing: 0.04em;
+      padding: 6px 10px;
+      border-radius: 7px;
+      cursor: pointer;
+      transition: border-color 0.14s ease, box-shadow 0.14s ease;
+      display: inline-flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+    }
+
+    .cad-mode-switch:hover {
+      border-color: var(--accent-active);
+    }
+
+    .cad-mode-switch .switch-label {
+      color: var(--text-muted);
+      transition: color 0.18s ease, font-weight 0.18s ease;
+    }
+
+    .cad-mode-switch:not(.is-diagram) .switch-label-world {
+      color: #2e943c;
+      font-weight: 600;
+    }
+
+    .cad-mode-switch.is-diagram .switch-label-diagram {
+      color: var(--accent-active);
+      font-weight: 600;
+    }
+
+    .cad-mode-switch .switch-track {
+      position: relative;
+      width: 28px;
+      height: 14px;
+      border: 1.5px solid #2e943c;
+      border-radius: 9999px;
+      background: rgba(46, 148, 60, 0.12);
+      flex-shrink: 0;
+      transition: border-color 0.2s ease, background-color 0.2s ease;
+    }
+
+    .cad-mode-switch.is-diagram .switch-track {
+      border-color: var(--accent-active);
+      background: rgba(219, 39, 119, 0.14);
+    }
+
+    .cad-mode-switch .switch-thumb {
+      position: absolute;
+      top: 1.5px;
+      left: 2px;
+      width: 8px;
+      height: 8px;
+      border-radius: 9999px;
+      background: #2e943c;
+      transition: transform 0.22s cubic-bezier(0.22, 1, 0.36, 1), background-color 0.2s ease;
+    }
+
+    .cad-mode-switch.is-diagram .switch-thumb {
+      transform: translateX(13px);
+      background: var(--accent-active);
     }
 
     /* Landmark library tile in popup */
@@ -246,9 +485,11 @@
 </head>
 <body class="h-screen w-screen overflow-hidden relative">
 
-  <!-- FULL-SCREEN 3D FLOATING WORLD CANVAS -->
+  <!-- FULL-SCREEN 3D FLOATING WORLD CANVAS + COLORFUL SCHEMATIC DIAGRAM LAYER -->
   <div id="canvas-wrapper">
     <canvas id="webgl-canvas" class="w-full h-full block"></canvas>
+    <div id="diagram-backdrop" aria-hidden="true"></div>
+    <svg id="diagram-svg-layer" aria-hidden="true"></svg>
     <svg id="callouts-svg" class="absolute inset-0 w-full h-full pointer-events-none z-10 overflow-visible"></svg>
     <div id="labels-layer" class="absolute inset-0 pointer-events-none overflow-hidden z-20"></div>
   </div>
@@ -289,8 +530,10 @@
 
     <!-- Diagram View & Export Controls -->
     <div class="glass p-2 rounded-xl flex flex-col gap-1.5 shadow-sm pointer-events-auto">
-      <button id="btn-diagram-mode" class="pill-btn w-full py-2 font-semibold" title="Fade out island and spread components into an architectural diagram">
-        DIAGRAM VIEW
+      <button id="btn-diagram-mode" type="button" role="switch" aria-checked="false" class="cad-mode-switch w-full py-2 px-3" title="Switch between 3D Floating World and Colorful Schematic Diagram (D)">
+        <span class="switch-label switch-label-world">WORLD</span>
+        <span class="switch-track"><span class="switch-thumb"></span></span>
+        <span class="switch-label switch-label-diagram">DIAGRAM</span>
       </button>
       <div class="builder-ui grid grid-cols-2 gap-1.5 pt-1" style="border-top: 1px solid var(--border-hairline);">
         <button id="btn-download-html" class="pill-btn" title="Download standalone viewer HTML">↓ DOWNLOAD</button>
@@ -550,15 +793,17 @@
      * ============================================================================
      */
     const canvas = document.getElementById('webgl-canvas');
+    const diagramSvgLayer = document.getElementById('diagram-svg-layer');
     const calloutsSvg = document.getElementById('callouts-svg');
     const labelsLayer = document.getElementById('labels-layer');
 
     const scene = new THREE.Scene();
-    scene.background = new THREE.Color(0xffffff);
+    scene.background = null;
 
     const camera = new THREE.PerspectiveCamera(34, window.innerWidth / window.innerHeight, 0.1, 220);
 
-    const renderer = new THREE.WebGLRenderer({ canvas, antialias: true });
+    const renderer = new THREE.WebGLRenderer({ canvas, antialias: true, alpha: true });
+    renderer.setClearColor(0x000000, 0);
     renderer.setSize(window.innerWidth, window.innerHeight);
     renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
     renderer.shadowMap.enabled = true;
@@ -1024,13 +1269,20 @@
         const beam1 = addStyledMesh(new THREE.BoxGeometry(0.14, 4.8, 0.14), mainHex, spireGroup);
         beam1.position.set(0.45, 2.3, 0);
         beam1.rotation.z = -0.18;
+        beam1.userData.isSkyBeam = true;
 
         const beam2 = addStyledMesh(new THREE.BoxGeometry(0.14, 4.8, 0.14), mainHex, spireGroup);
         beam2.position.set(0.75, 2.3, 0.15);
         beam2.rotation.z = -0.18;
+        beam2.userData.isSkyBeam = true;
 
         animators.push((t) => {
           upperDrum.rotation.y = t * 0.8;
+          const beamScaleY = 1 - diagramProgress * 0.58;
+          beam1.scale.y = beamScaleY;
+          beam2.scale.y = beamScaleY;
+          beam1.position.y = 1.15 + 1.15 * beamScaleY;
+          beam2.position.y = 1.15 + 1.15 * beamScaleY;
         });
 
       } else if (type === 'pistons') {
@@ -1127,11 +1379,15 @@
         });
       }
 
-      // Selection halo ring on the lawn when active
+      // Selection halo ring on the lawn when active (hidden in Diagram Mode)
       if (isSelected) {
         const ring = addStyledMesh(new THREE.RingGeometry(1.15, 1.28, 32), 0xdb2777, group);
         ring.rotation.x = -Math.PI / 2;
         ring.position.y = 0.14;
+        ring.userData.isHaloRing = true;
+        animators.push(() => {
+          ring.visible = diagramProgress < 0.25;
+        });
       }
 
       return { group, animators };
@@ -1139,12 +1395,15 @@
 
     /**
      * ============================================================================
-     * 8. FLOATING WORLD ASSEMBLY & WINDING EMERALD RIBBON CONDUITS
+     * 8. FLOATING WORLD ASSEMBLY, COLORFUL DIAGRAM SVG, & EMERALD RIBBON CONDUITS
      * ============================================================================
      */
     let activeAnimators = [];
-    let partNodes = []; // { index, group, hitMesh, labelEl, lineEl, dotEl }
+    let partNodes = []; // { index, group, hitMesh, labelEl, slotEl, lineEl, dotEl, localCenter, boundSpan }
     let ribbonConnections = []; // { i, j, edgeIdx, tubeMesh, pulseOrb, lastSpread }
+    let diagramEdges = []; // Colorful 2D SVG schematic curves & signal packets
+
+    const CONDUIT_PROTOCOLS = ['RIBBON·BUS', 'SYNC·LINK', 'EVENT·ARC', 'DATA·FLOW', 'STREAM·IO', 'STATE·BRIDGE'];
 
     function getPartDescription(part) {
       if (part.desc && part.desc.trim()) return part.desc.trim();
@@ -1171,93 +1430,133 @@
       return { curve, geo };
     }
 
+    function buildDiagramSvgConnections(primaryEdges, secondaryEdges) {
+      diagramSvgLayer.innerHTML = '';
+      diagramEdges = [];
+      const ns = 'http://www.w3.org/2000/svg';
+
+      const allConns = [
+        ...primaryEdges.map(([from, to], i) => ({
+          from,
+          to,
+          primary: true,
+          label: CONDUIT_PROTOCOLS[i % CONDUIT_PROTOCOLS.length]
+        })),
+        ...secondaryEdges.map(([from, to], i) => ({
+          from,
+          to,
+          primary: false,
+          label: i % 2 === 0 ? 'FEEDBACK' : 'TELEMETRY'
+        }))
+      ];
+
+      allConns.forEach((conn, cIdx) => {
+        const partA = machineParts[conn.from];
+        const partB = machineParts[conn.to];
+        const metaA = partA ? getPartMetadata(partA.type) : MECHANISM_PARTS[0];
+        const metaB = partB ? getPartMetadata(partB.type) : MECHANISM_PARTS[0];
+        const colorA = (partA && partA.color) || metaA.defaultColor;
+        const colorB = (partB && partB.color) || metaB.defaultColor;
+        const strokeColor = conn.primary ? colorA : '#2e943c';
+
+        const g = document.createElementNS(ns, 'g');
+
+        const path = document.createElementNS(ns, 'path');
+        path.setAttribute('fill', 'none');
+        path.setAttribute('stroke', strokeColor);
+        path.setAttribute('stroke-width', conn.primary ? '2.0' : '1.35');
+        if (!conn.primary) {
+          path.setAttribute('stroke-dasharray', '5 4');
+        }
+        g.appendChild(path);
+
+        const portStart = document.createElementNS(ns, 'circle');
+        portStart.setAttribute('r', '4');
+        portStart.setAttribute('fill', '#ffffff');
+        portStart.setAttribute('stroke', colorA);
+        portStart.setAttribute('stroke-width', '2');
+        g.appendChild(portStart);
+
+        const portEnd = document.createElementNS(ns, 'circle');
+        portEnd.setAttribute('r', '4');
+        portEnd.setAttribute('fill', colorB);
+        portEnd.setAttribute('stroke', '#ffffff');
+        portEnd.setAttribute('stroke-width', '1.5');
+        g.appendChild(portEnd);
+
+        const pkt = document.createElementNS(ns, 'circle');
+        pkt.setAttribute('r', conn.primary ? '4.5' : '3.5');
+        pkt.setAttribute('fill', conn.primary ? colorB : '#e0b84c');
+        pkt.setAttribute('stroke', '#ffffff');
+        pkt.setAttribute('stroke-width', '1.4');
+        g.appendChild(pkt);
+
+        const badgeG = document.createElementNS(ns, 'g');
+        const badgeBg = document.createElementNS(ns, 'rect');
+        const labelLen = (conn.label || '').length * 5.4 + 12;
+        badgeBg.setAttribute('width', String(labelLen));
+        badgeBg.setAttribute('height', '16');
+        badgeBg.setAttribute('x', String(-labelLen / 2));
+        badgeBg.setAttribute('y', '-8');
+        badgeBg.setAttribute('rx', '5');
+        badgeBg.setAttribute('fill', 'var(--bg-primary)');
+        badgeBg.setAttribute('stroke', strokeColor);
+        badgeBg.setAttribute('stroke-width', '1.2');
+
+        const badgeTxt = document.createElementNS(ns, 'text');
+        badgeTxt.setAttribute('text-anchor', 'middle');
+        badgeTxt.setAttribute('dominant-baseline', 'central');
+        badgeTxt.setAttribute('fill', strokeColor);
+        badgeTxt.setAttribute('font-family', 'IBM Plex Mono, monospace');
+        badgeTxt.setAttribute('font-size', '8px');
+        badgeTxt.setAttribute('font-weight', '600');
+        badgeTxt.textContent = conn.label;
+
+        badgeG.appendChild(badgeBg);
+        badgeG.appendChild(badgeTxt);
+        g.appendChild(badgeG);
+
+        diagramSvgLayer.appendChild(g);
+
+        diagramEdges.push({
+          from: conn.from,
+          to: conn.to,
+          primary: conn.primary,
+          strokeColor,
+          colorA,
+          colorB,
+          pathEl: path,
+          portStartEl: portStart,
+          portEndEl: portEnd,
+          pktEl: pkt,
+          badgeEl: badgeG,
+          badgeBgEl: badgeBg,
+          badgeTxtEl: badgeTxt,
+          t: (cIdx * 0.23) % 1,
+          speed: conn.primary ? 0.0042 : 0.0028
+        });
+      });
+    }
+
     function rebuildMachine3D() {
       while (machineRoot.children.length > 0) {
         machineRoot.remove(machineRoot.children[0]);
       }
       labelsLayer.innerHTML = '';
       calloutsSvg.innerHTML = '';
+      diagramSvgLayer.innerHTML = '';
       activeAnimators = [];
       partNodes = [];
       ribbonConnections = [];
+      diagramEdges = [];
 
       if (machineParts.length === 0) return;
 
-      const spreadFactor = 1 + diagramProgress * 0.85;
-
-      // 1. Place each landmark on the floating island (or spread out in diagram mode)
-      machineParts.forEach((part, idx) => {
-        if (typeof part.x !== 'number' || typeof part.z !== 'number') {
-          layoutCluster2D(machineParts);
-        }
-
-        const isSel = idx === selectedIdx && !isViewerOnly;
-        const meta = getPartMetadata(part.type);
-        const activeColor = part.color || meta.defaultColor;
-        const built = createLandmarkMesh(part.type, activeColor, isSel, idx);
-
-        built.group.position.set(part.x * spreadFactor, 0.1, part.z * spreadFactor);
-
-        // Invisible hit collider for clicking/dragging
-        const hitBox = new THREE.Mesh(
-          new THREE.BoxGeometry(2.2, 2.8, 2.2),
-          new THREE.MeshBasicMaterial({ visible: false })
-        );
-        hitBox.position.y = 1.1;
-        hitBox.userData = { partIndex: idx };
-        built.group.add(hitBox);
-
-        machineRoot.add(built.group);
-        activeAnimators.push(...built.animators);
-
-        // SVG Bent Leader Line + Anchor Dot
-        const svgNS = 'http://www.w3.org/2000/svg';
-        const poly = document.createElementNS(svgNS, 'polyline');
-        poly.setAttribute('fill', 'none');
-        poly.setAttribute('stroke', isSel ? '#db2777' : 'rgba(24, 24, 27, 0.42)');
-        poly.setAttribute('stroke-width', isSel ? '1.8' : '1.15');
-        calloutsSvg.appendChild(poly);
-
-        const dot = document.createElementNS(svgNS, 'circle');
-        dot.setAttribute('r', isSel ? '4' : '3');
-        dot.setAttribute('fill', activeColor);
-        dot.setAttribute('stroke', '#ffffff');
-        dot.setAttribute('stroke-width', '1.2');
-        calloutsSvg.appendChild(dot);
-
-        // Perimeter Callout Card with Name + Brief Description
-        const tag = document.createElement('div');
-        tag.className = `callout-card ${isSel ? 'selected' : ''}`;
-        const descText = getPartDescription(part);
-        tag.innerHTML = `
-          <div class="flex items-center gap-1.5" style="justify-content: inherit;">
-            <span class="w-2 h-2 rounded-full shrink-0" style="background:${activeColor};"></span>
-            <span class="part-title font-display text-[11px] font-bold leading-tight truncate">${part.name}</span>
-          </div>
-          <div class="part-desc text-[9.5px] leading-snug opacity-80 mt-0.5">${descText}</div>
-        `;
-        tag.addEventListener('click', (e) => {
-          e.stopPropagation();
-          if (isViewerOnly) return;
-          openPopupForPart(idx, e.clientX, e.clientY);
-        });
-        labelsLayer.appendChild(tag);
-
-        partNodes.push({
-          index: idx,
-          group: built.group,
-          hitMesh: hitBox,
-          labelEl: tag,
-          lineEl: poly,
-          dotEl: dot
-        });
-      });
-
-      // 2. Connect landmarks with Swooping Green 3D Ribbon Tubes
+      // Compute Spanning Tree + Secondary Loop Connections first so cards know their linked peers
+      const primaryEdges = [];
+      const secondaryEdges = [];
       if (machineParts.length > 1) {
         const connected = new Set([0]);
-        const edges = [];
-
         while (connected.size < machineParts.length) {
           let bestFrom = -1;
           let bestTo = -1;
@@ -1279,48 +1578,239 @@
 
           if (bestTo !== -1) {
             connected.add(bestTo);
-            edges.push([bestFrom, bestTo]);
+            primaryEdges.push([bestFrom, bestTo]);
           } else {
             break;
           }
         }
 
-        edges.forEach(([i, j], edgeIdx) => {
-          const pA = machineParts[i];
-          const pB = machineParts[j];
-          const dist = Math.hypot(pB.x - pA.x, pB.z - pA.z);
-          if (dist < 0.2) return;
-
-          const { curve, geo } = createRibbonGeometry(pA, pB, spreadFactor, edgeIdx);
-          const tubeMesh = new THREE.Mesh(geo, matFlat(0x2e943c));
-          tubeMesh.castShadow = true;
-          tubeMesh.receiveShadow = true;
-          machineRoot.add(tubeMesh);
-
-          const pulseOrb = addStyledMesh(
-            new THREE.SphereGeometry(0.12, 12, 12),
-            0xfde047,
-            machineRoot
-          );
-
-          const connObj = {
-            i,
-            j,
-            edgeIdx,
-            curve,
-            tubeMesh,
-            pulseOrb,
-            lastSpread: spreadFactor
-          };
-          ribbonConnections.push(connObj);
-
-          activeAnimators.push((t) => {
-            const u = (t * 0.38 + edgeIdx * 0.27) % 1;
-            const pos = connObj.curve.getPointAt(u);
-            pulseOrb.position.copy(pos);
-          });
-        });
+        if (machineParts.length >= 4) {
+          secondaryEdges.push([1, 2]);
+          if (machineParts.length >= 6) {
+            secondaryEdges.push([machineParts.length - 2, machineParts.length - 1]);
+          }
+        }
       }
+
+      buildDiagramSvgConnections(primaryEdges, secondaryEdges);
+
+      // 1. Place each landmark on the floating island (and prepare its 3D bounding box for Diagram Mode miniaturization)
+      machineParts.forEach((part, idx) => {
+        if (typeof part.x !== 'number' || typeof part.z !== 'number') {
+          layoutCluster2D(machineParts);
+        }
+
+        const isSel = idx === selectedIdx && !isViewerOnly;
+        const meta = getPartMetadata(part.type);
+        const activeColor = part.color || meta.defaultColor;
+        const built = createLandmarkMesh(part.type, activeColor, isSel, idx);
+
+        // Compute true local bounding box (excluding ground halo ring & using compact skybeam scale)
+        const savedVis = [];
+        built.group.traverse((ch) => {
+          if (ch.userData && ch.userData.isHaloRing) {
+            savedVis.push({ ch, vis: ch.visible });
+            ch.visible = false;
+          }
+          if (ch.userData && ch.userData.isSkyBeam) {
+            ch.scale.y = 0.42;
+            ch.position.y = 1.63;
+          }
+        });
+        const partBox = new THREE.Box3().setFromObject(built.group);
+        const localCenter = new THREE.Vector3();
+        const partSize = new THREE.Vector3();
+        partBox.getCenter(localCenter);
+        partBox.getSize(partSize);
+        const boundSpan = Math.max(1.3, partSize.length());
+        savedVis.forEach(({ ch, vis }) => { ch.visible = vis; });
+
+        built.group.position.set(part.x, 0.1, part.z);
+
+        // Invisible hit collider for clicking/dragging
+        const hitBox = new THREE.Mesh(
+          new THREE.BoxGeometry(2.2, 2.8, 2.2),
+          new THREE.MeshBasicMaterial({ visible: false })
+        );
+        hitBox.position.y = 1.1;
+        hitBox.userData = { partIndex: idx };
+        built.group.add(hitBox);
+
+        machineRoot.add(built.group);
+        activeAnimators.push(...built.animators);
+
+        // SVG Bent Leader Line + Anchor Dot (for 3D Island World view)
+        const svgNS = 'http://www.w3.org/2000/svg';
+        const poly = document.createElementNS(svgNS, 'polyline');
+        poly.setAttribute('fill', 'none');
+        poly.setAttribute('stroke', isSel ? '#db2777' : 'rgba(24, 24, 27, 0.42)');
+        poly.setAttribute('stroke-width', isSel ? '1.8' : '1.15');
+        calloutsSvg.appendChild(poly);
+
+        const dot = document.createElementNS(svgNS, 'circle');
+        dot.setAttribute('r', isSel ? '4' : '3');
+        dot.setAttribute('fill', activeColor);
+        dot.setAttribute('stroke', '#ffffff');
+        dot.setAttribute('stroke-width', '1.2');
+        calloutsSvg.appendChild(dot);
+
+        // Connected peer badges for diagram card footer
+        const peers = [];
+        primaryEdges.forEach(([a, b]) => {
+          if (a === idx) peers.push(`→0${b + 1}`);
+          else if (b === idx) peers.push(`←0${a + 1}`);
+        });
+
+        const descText = getPartDescription(part);
+        if (typeof part.notes !== 'string' || !part.notes.trim()) {
+          part.notes = descText;
+        }
+        const stepStr = String(idx + 1).padStart(2, '0');
+        const shortTypeBadge = meta ? meta.label.split(' ').pop().toUpperCase() : part.type.toUpperCase();
+
+        // Hybrid Perimeter Callout Card / Colorful Schematic Diagram Card (with 3D Landmark Slot + Editable Notes)
+        const tag = document.createElement('div');
+        tag.className = `callout-card ${isSel ? 'selected' : ''}`;
+        tag.style.setProperty('--part-color', activeColor);
+        tag.style.setProperty('--part-tint', `${activeColor}18`);
+        tag.style.setProperty('--part-border', `${activeColor}55`);
+        tag.style.setProperty('--part-glow', `${activeColor}48`);
+
+        tag.innerHTML = `
+          <div class="part-card-header flex items-center gap-1.5" style="justify-content: inherit;">
+            <div class="flex items-center gap-1.5 min-w-0">
+              <span class="diagram-step-num">${stepStr}</span>
+              <span class="w-2 h-2 rounded-full shrink-0" style="background:${activeColor};"></span>
+              <span class="part-title font-display text-[11px] font-bold leading-tight truncate">${part.name}</span>
+            </div>
+            <span class="diagram-type-badge">${shortTypeBadge}</span>
+          </div>
+          <div class="world-desc part-desc text-[9.5px] leading-snug opacity-80 mt-0.5">${descText}</div>
+          <div class="diagram-card-body">
+            <div class="diagram-part-3d-slot" title="Live 3D ${meta ? meta.label : part.type} landmark"></div>
+            <textarea class="diagram-part-notes" rows="3" ${isViewerOnly ? 'readonly' : ''} placeholder="Landmark role or architecture notes..."></textarea>
+          </div>
+          <div class="diagram-card-footer">
+            <span style="color:${activeColor}; font-weight:600;">${meta ? meta.label.toUpperCase() : part.type.toUpperCase()}</span>
+            <span>${peers.slice(0, 4).join(' ') || 'SANCTUARY CORE'}</span>
+          </div>
+        `;
+
+        const notesTextarea = tag.querySelector('.diagram-part-notes');
+        const worldDescEl = tag.querySelector('.world-desc');
+        if (notesTextarea) {
+          notesTextarea.value = part.notes;
+          notesTextarea.addEventListener('pointerdown', (e) => e.stopPropagation());
+          notesTextarea.addEventListener('mousedown', (e) => e.stopPropagation());
+          notesTextarea.addEventListener('click', (e) => e.stopPropagation());
+          notesTextarea.addEventListener('input', (e) => {
+            part.notes = e.target.value;
+            part.desc = e.target.value;
+            if (worldDescEl) worldDescEl.textContent = e.target.value;
+          });
+        }
+
+        const slotEl = tag.querySelector('.diagram-part-3d-slot');
+
+        // Support dragging component cards in Diagram Mode & clicking to open builder popup
+        let cardDragStart = null;
+        tag.addEventListener('pointerdown', (e) => {
+          if (e.target === notesTextarea) return;
+          if (!isDiagramMode) return;
+          e.stopPropagation();
+          cardDragStart = {
+            x: e.clientX,
+            y: e.clientY,
+            origX: part.diagDragX || 0,
+            origY: part.diagDragY || 0,
+            moved: false
+          };
+          const onMove = (me) => {
+            if (!cardDragStart) return;
+            const dx = me.clientX - cardDragStart.x;
+            const dy = me.clientY - cardDragStart.y;
+            if (Math.hypot(dx, dy) > 4) cardDragStart.moved = true;
+            part.diagDragX = cardDragStart.origX + dx;
+            part.diagDragY = cardDragStart.origY + dy;
+          };
+          const onUp = (ue) => {
+            window.removeEventListener('pointermove', onMove);
+            window.removeEventListener('pointerup', onUp);
+            const wasDragged = cardDragStart && cardDragStart.moved;
+            cardDragStart = null;
+            if (!wasDragged) {
+              selectedIdx = idx;
+              if (!isViewerOnly) {
+                openPopupForPart(idx, ue.clientX, ue.clientY);
+              } else {
+                partNodes.forEach((n, i) => n.labelEl.classList.toggle('selected', i === selectedIdx));
+              }
+            }
+          };
+          window.addEventListener('pointermove', onMove);
+          window.addEventListener('pointerup', onUp);
+        });
+
+        tag.addEventListener('click', (e) => {
+          if (e.target === notesTextarea) return;
+          e.stopPropagation();
+          if (isDiagramMode) return;
+          if (isViewerOnly) return;
+          openPopupForPart(idx, e.clientX, e.clientY);
+        });
+        labelsLayer.appendChild(tag);
+
+        partNodes.push({
+          index: idx,
+          group: built.group,
+          localCenter,
+          boundSpan,
+          hitMesh: hitBox,
+          labelEl: tag,
+          slotEl,
+          lineEl: poly,
+          dotEl: dot
+        });
+      });
+
+      // 2. Connect landmarks with Swooping Green 3D Ribbon Tubes (faded out in Diagram Mode)
+      primaryEdges.forEach(([i, j], edgeIdx) => {
+        const pA = machineParts[i];
+        const pB = machineParts[j];
+        const dist = Math.hypot(pB.x - pA.x, pB.z - pA.z);
+        if (dist < 0.2) return;
+
+        const { curve, geo } = createRibbonGeometry(pA, pB, 1, edgeIdx);
+        const tubeMesh = new THREE.Mesh(geo, matFlat(0x2e943c));
+        tubeMesh.castShadow = true;
+        tubeMesh.receiveShadow = true;
+        machineRoot.add(tubeMesh);
+
+        const pulseOrb = addStyledMesh(
+          new THREE.SphereGeometry(0.12, 12, 12),
+          0xfde047,
+          machineRoot
+        );
+
+        const connObj = {
+          i,
+          j,
+          edgeIdx,
+          curve,
+          tubeMesh,
+          pulseOrb,
+          lastSpread: 1
+        };
+        ribbonConnections.push(connObj);
+
+        activeAnimators.push((t) => {
+          const u = (t * 0.38 + edgeIdx * 0.27) % 1;
+          const pos = connObj.curve.getPointAt(u);
+          pulseOrb.position.copy(pos);
+        });
+      });
+
+      setIslandVisibilityAndFade(1 - diagramProgress);
     }
 
     /**
@@ -1517,7 +2007,7 @@
     const wrapper = document.getElementById('canvas-wrapper');
 
     wrapper.addEventListener('pointerdown', (e) => {
-      if (e.target.closest('.part-tag')) return;
+      if (e.target.closest('.callout-card') || isDiagramMode) return;
       pointerDownPos = { x: e.clientX, y: e.clientY };
       prevPointerPos = { x: e.clientX, y: e.clientY };
 
@@ -1625,8 +2115,9 @@
 
     const btnDiagramMode = document.getElementById('btn-diagram-mode');
     function syncDiagramButtonUI() {
-      btnDiagramMode.classList.toggle('active', isDiagramMode);
-      btnDiagramMode.textContent = isDiagramMode ? '← ISLAND WORLD' : 'DIAGRAM VIEW';
+      document.body.classList.toggle('diagram-mode', isDiagramMode);
+      btnDiagramMode.classList.toggle('is-diagram', isDiagramMode);
+      btnDiagramMode.setAttribute('aria-checked', isDiagramMode ? 'true' : 'false');
     }
 
     btnDiagramMode.addEventListener('click', () => {
@@ -1634,19 +2125,52 @@
       syncDiagramButtonUI();
     });
 
+    window.addEventListener('keydown', (e) => {
+      const tag = e.target && e.target.tagName ? e.target.tagName.toLowerCase() : '';
+      if (tag === 'input' || tag === 'textarea' || (e.target && e.target.isContentEditable)) return;
+      if (e.key === 'd' || e.key === 'D') {
+        e.preventDefault();
+        isDiagramMode = !isDiagramMode;
+        syncDiagramButtonUI();
+      } else if (e.key === 'Escape' && isDiagramMode) {
+        isDiagramMode = false;
+        syncDiagramButtonUI();
+      }
+    });
+
     function setIslandVisibilityAndFade(alpha) {
-      islandEnvGroup.visible = alpha > 0.01;
-      islandEnvGroup.scale.setScalar(Math.max(0.001, 1 - (1 - alpha) * 0.12));
-      islandEnvGroup.position.y = -(1 - alpha) * 1.3;
+      const clampedAlpha = Math.max(0, Math.min(1, alpha));
+      islandEnvGroup.visible = clampedAlpha > 0.01;
+      islandEnvGroup.scale.setScalar(Math.max(0.001, 1 - (1 - clampedAlpha) * 0.12));
+      islandEnvGroup.position.y = -(1 - clampedAlpha) * 1.3;
       islandEnvGroup.traverse((child) => {
         if ((child.isMesh || child.isLineSegments) && child.material) {
           if (child.userData.baseOpacity === undefined) {
             child.userData.baseOpacity = child.material.opacity !== undefined ? child.material.opacity : 1.0;
           }
-          child.material.transparent = alpha < 0.999 || child.userData.baseOpacity < 1.0;
-          child.material.opacity = child.userData.baseOpacity * alpha;
+          child.material.transparent = clampedAlpha < 0.999 || child.userData.baseOpacity < 1.0;
+          child.material.opacity = child.userData.baseOpacity * clampedAlpha;
         }
       });
+
+      // Fade 3D emerald ribbon conduits as the colorful 2D SVG schematic lines take over
+      ribbonConnections.forEach((conn) => {
+        if (conn.tubeMesh && conn.tubeMesh.material) {
+          conn.tubeMesh.visible = clampedAlpha > 0.02;
+          conn.tubeMesh.material.transparent = clampedAlpha < 0.999;
+          conn.tubeMesh.material.opacity = clampedAlpha;
+        }
+        if (conn.pulseOrb) {
+          conn.pulseOrb.visible = clampedAlpha > 0.05;
+        }
+      });
+
+      if (calloutsSvg) {
+        calloutsSvg.style.opacity = String(Math.max(0, (clampedAlpha - 0.18) / 0.82));
+      }
+      if (diagramSvgLayer) {
+        diagramSvgLayer.style.opacity = String(Math.max(0, ((1 - clampedAlpha) - 0.05) / 0.95));
+      }
     }
 
     // DOWNLOAD HTML (Viewer-Only Mode)
@@ -1795,7 +2319,15 @@
         const lType = inferTypeFromText(seg, idx);
         const meta = getPartMetadata(lType);
 
-        // If the segment uses "Title: Description" format, respect it
+        // If the segment uses "Title (Desc)" or "Title: Description" format, preserve the authentic name verbatim
+        const parenMatch = seg.match(/^([^(]{2,36})\(([^)]+)\)/);
+        if (parenMatch) {
+          return {
+            name: parenMatch[1].trim(),
+            desc: parenMatch[2].trim().slice(0, 68),
+            type: lType
+          };
+        }
         const colonMatch = seg.match(/^([^:–—-]{3,34})\s*[:–—-]\s*(.+)$/);
         if (colonMatch) {
           return {
@@ -1805,7 +2337,16 @@
           };
         }
 
-        // Extract key content words for a clean architectural landmark title
+        // Preserve short bullet lines verbatim
+        if (seg.length <= 32) {
+          return {
+            name: seg,
+            desc: meta.sub,
+            type: lType
+          };
+        }
+
+        // Extract key content words for a clean title
         const words = seg
           .replace(/[^a-zA-Z0-9\s/-]/g, ' ')
           .split(/\s+/)
@@ -1832,12 +2373,12 @@
         contents: [{
           role: "user",
           parts: [{
-            text: `Turn the following project description or architecture notes into 6 to 7 distinct components for an interactive 3D world diagram.\n\nProject Text:\n${rawText}`
+            text: `Turn the following project description, resume, or architecture notes into 6 to 7 distinct components for an interactive 3D world diagram. Preserve the authentic item/project/role names from the source text verbatim without inventing metaphors.\n\nProject Text:\n${rawText}`
           }]
         }],
         systemInstruction: {
           parts: [{
-            text: "You are a systems & concept architect. Extract a concise project title (2-4 words) and 6-7 core components from any prose description, idea pitch, or technical spec. Each component needs a short 'name' (2-4 words, max 28 chars), a concise 'desc' (max 62 chars explaining its role), and a 'type' chosen from: ['gyro','valve','gear','turbine','pistons','drum','conveyor','cam']."
+            text: "You are a systems & concept architect. Extract a concise project title (2-4 words) and 6-7 core components from any prose description, resume, idea pitch, or technical spec. CRITICAL: Preserve the exact, authentic item, module, or role names from the text for each component's 'name' (max 28 chars)—do NOT rename them into castles or metaphors. Provide a concise 'desc' (max 62 chars explaining its role) and a 'type' chosen from: ['gyro','valve','gear','turbine','pistons','drum','conveyor','cam']."
           }]
         },
         generationConfig: {
@@ -2072,52 +2613,77 @@
 
     /**
      * ============================================================================
-     * 14. ANIMATION LOOP (LEVITATING ISLAND, DIAGRAM SPREAD, & BENT LEADER LINES)
+     * 14. ANIMATION LOOP (LEVITATING ISLAND, DIAGRAM BREAK-APART, & COLORFUL SVG)
      * ============================================================================
      */
     const clock = new THREE.Clock();
     const projVec = new THREE.Vector3();
     const centerProj = new THREE.Vector3();
 
-    function updateLabels() {
+    function evalCubicBezier(p0, p1, p2, p3, t) {
+      const u = 1 - t;
+      return (u * u * u * p0) + (3 * u * u * t * p1) + (3 * u * t * t * p2) + (t * t * t * p3);
+    }
+
+    function computeDiagramTargetCoord(idx, total, w, h) {
+      const stageLeft = (!isViewerOnly && w > 820) ? 266 : 24;
+      const stageRight = w - 24;
+      const topPad = 48;
+      const botPad = h - 48;
+      const cx = (stageLeft + stageRight) * 0.5;
+      const cy = (topPad + botPad) * 0.5;
+      const spanX = Math.max(135, (stageRight - stageLeft) * 0.37);
+      const spanY = Math.max(105, (botPad - topPad) * 0.38);
+
+      if (total <= 1 || idx === 0) {
+        return { x: cx, y: cy };
+      }
+
+      const ringCount = total - 1;
+      const ringIdx = idx - 1;
+      const angle = (ringIdx / ringCount) * Math.PI * 2 - Math.PI * 0.75;
+      return {
+        x: cx + Math.cos(angle) * spanX,
+        y: cy + Math.sin(angle) * spanY
+      };
+    }
+
+    function updateLabels(elapsed) {
       const w = window.innerWidth;
       const h = window.innerHeight;
+      const total = partNodes.length;
+      if (total === 0) return;
 
-      // Project the island center onto the 2D screen
-      worldFloatGroup.getWorldPosition(centerProj);
-      centerProj.y += 0.8;
+      const refNdc = camTarget.clone().project(camera);
+      const vFovRad = (camera.fov * Math.PI) / 180;
+      const worldPerPixel = h > 0 ? (2 * camRadius * Math.tan(vFovRad * 0.5)) / h : 0.01;
+
+      // 1. Project the island center onto the 2D screen for World Mode callouts
+      centerProj.set(0, worldFloatGroup.position.y + 0.8, 0);
       centerProj.project(camera);
       const cx = (centerProj.x * 0.5 + 0.5) * w;
       const cy = (-(centerProj.y * 0.5) + 0.5) * h;
 
-      // Perimeter ring radii (kept clear of the left sidebar dock and outside the island)
-      const rx = Math.min(w * 0.31, 315) * (1 + diagramProgress * 0.16);
-      const ry = Math.min(h * 0.37, 255) * (1 + diagramProgress * 0.12);
+      const rx = Math.min(w * 0.31, 315);
+      const ry = Math.min(h * 0.37, 255);
 
       const leftGroup = [];
       const rightGroup = [];
 
-      partNodes.forEach((node) => {
-        node.group.getWorldPosition(projVec);
-        projVec.y += 1.05;
+      partNodes.forEach((node, idx) => {
+        const part = machineParts[idx];
+        const homeX = part ? part.x : 0;
+        const homeZ = part ? part.z : 0;
+
+        projVec.set(homeX, worldFloatGroup.position.y + 1.15, homeZ);
         projVec.project(camera);
+        node.behindCamera = projVec.z > 1;
 
-        if (projVec.z > 1) {
-          node.labelEl.style.display = 'none';
-          node.lineEl.style.display = 'none';
-          node.dotEl.style.display = 'none';
-          return;
-        }
+        const sx3D = (projVec.x * 0.5 + 0.5) * w;
+        const sy3D = (-(projVec.y * 0.5) + 0.5) * h;
 
-        node.labelEl.style.display = 'block';
-        node.lineEl.style.display = 'block';
-        node.dotEl.style.display = 'block';
-
-        const sx = (projVec.x * 0.5 + 0.5) * w;
-        const sy = (-(projVec.y * 0.5) + 0.5) * h;
-
-        const item = { node, sx, sy };
-        if (sx < cx - 8) {
+        const item = { node, sx: sx3D, sy: sy3D };
+        if (sx3D < cx - 8) {
           leftGroup.push(item);
         } else {
           rightGroup.push(item);
@@ -2128,7 +2694,6 @@
         if (items.length === 0) return;
         items.sort((a, b) => a.sy - b.sy);
 
-        // Evenly distribute vertical slots outside the island so callouts never overlap
         const minGap = 58;
         const ys = items.map((it) => {
           const dy = it.sy - cy;
@@ -2169,12 +2734,10 @@
             labelX = elbowX + 22;
           } else {
             elbowX = Math.min(it.sx - 28, cx - rx * arcFactor);
-            // Leave room on the left so labels don't collide with the sidebar dock
             elbowX = Math.max(255, elbowX);
             labelX = elbowX - 22;
           }
 
-          // Bent two-segment architectural callout line: (sx, sy) -> (elbowX, targetY) -> (labelX, targetY)
           it.node.lineEl.setAttribute(
             'points',
             `${it.sx.toFixed(1)},${it.sy.toFixed(1)} ${elbowX.toFixed(1)},${targetY.toFixed(1)} ${labelX.toFixed(1)},${targetY.toFixed(1)}`
@@ -2182,70 +2745,227 @@
           it.node.dotEl.setAttribute('cx', it.sx.toFixed(1));
           it.node.dotEl.setAttribute('cy', it.sy.toFixed(1));
 
-          it.node.labelEl.classList.toggle('side-right', isRight);
-          it.node.labelEl.classList.toggle('side-left', !isRight);
-          it.node.labelEl.style.left = `${labelX.toFixed(1)}px`;
-          it.node.labelEl.style.top = `${targetY.toFixed(1)}px`;
+          it.node.worldLabelX = labelX;
+          it.node.worldLabelY = targetY;
+          it.node.worldIsRight = isRight;
         });
       }
 
       layoutSideCallouts(leftGroup, false);
       layoutSideCallouts(rightGroup, true);
+
+      // 2. Interpolate each card between 3D World Callout and 2D Colorful Diagram Card,
+      //    and fly + miniaturize its 3D landmark into the card's .diagram-part-3d-slot
+      partNodes.forEach((node, idx) => {
+        const part = machineParts[idx];
+        const homeX = part ? part.x : 0;
+        const homeZ = part ? part.z : 0;
+
+        if (node.behindCamera && diagramProgress < 0.05) {
+          node.labelEl.style.display = 'none';
+          node.lineEl.style.display = 'none';
+          node.dotEl.style.display = 'none';
+          return;
+        }
+
+        node.labelEl.style.display = 'block';
+        node.lineEl.style.display = diagramProgress > 0.85 ? 'none' : 'block';
+        node.dotEl.style.display = diagramProgress > 0.85 ? 'none' : 'block';
+
+        const cardW = node.labelEl.offsetWidth || (isDiagramMode ? 252 : 185);
+        const cardH = node.labelEl.offsetHeight || (isDiagramMode ? 124 : 38);
+        const padX = cardW * 0.5 + 14;
+        const padY = cardH * 0.5 + 14;
+        const minDiagramLeft = (!isViewerOnly && w > 820) ? 260 + cardW * 0.5 : padX;
+
+        const diagBase = computeDiagramTargetCoord(idx, total, w, h);
+        let xDiag = diagBase.x + (part && part.diagDragX ? part.diagDragX : 0);
+        let yDiag = diagBase.y + (part && part.diagDragY ? part.diagDragY : 0);
+        xDiag = Math.max(minDiagramLeft, Math.min(w - padX, xDiag));
+        yDiag = Math.max(padY, Math.min(h - padY, yDiag));
+
+        const wx = node.worldLabelX !== undefined ? node.worldLabelX : xDiag;
+        const wy = node.worldLabelY !== undefined ? node.worldLabelY : yDiag;
+        const sx = wx + (xDiag - wx) * diagramProgress;
+        const sy = wy + (yDiag - wy) * diagramProgress;
+
+        node.currentScreenX = sx;
+        node.currentScreenY = sy;
+        node.halfW = cardW * 0.5;
+        node.halfH = cardH * 0.5;
+
+        node.labelEl.classList.toggle('side-right', !!node.worldIsRight && !isDiagramMode);
+        node.labelEl.classList.toggle('side-left', !node.worldIsRight && !isDiagramMode);
+        node.labelEl.style.left = `${sx.toFixed(1)}px`;
+        node.labelEl.style.top = `${sy.toFixed(1)}px`;
+
+        // 3. Break apart & miniaturize the 3D landmark into its card's .diagram-part-3d-slot
+        node.slotClipRect = null;
+        if (node.group && w > 0 && h > 0) {
+          let slotX = sx - cardW * 0.35;
+          let slotY = sy + 6;
+          if (node.slotEl && diagramProgress > 0.15) {
+            const sRect = node.slotEl.getBoundingClientRect();
+            if (sRect.width > 8) {
+              slotX = sRect.left + sRect.width * 0.5;
+              slotY = sRect.top + sRect.height * 0.5;
+              node.slotClipRect = {
+                x: Math.max(0, sRect.left),
+                y: Math.max(0, h - sRect.bottom),
+                w: Math.max(0, sRect.width),
+                h: Math.max(0, sRect.height)
+              };
+            }
+          }
+
+          const ndcX = (slotX / w) * 2 - 1;
+          const ndcY = -(slotY / h) * 2 + 1;
+          const targetWorld = new THREE.Vector3(ndcX, ndcY, refNdc.z).unproject(camera);
+          // Account for worldFloatGroup vertical offset so the landmark lands exactly in the slot
+          targetWorld.y -= worldFloatGroup.position.y;
+
+          const span = node.boundSpan || 2.5;
+          const sMini = Math.min(0.24, (40 * worldPerPixel) / span);
+          const s = 1 + (sMini - 1) * diagramProgress;
+          node.group.scale.setScalar(s);
+
+          const locCenter = node.localCenter || new THREE.Vector3(0, 0.6, 0);
+          targetWorld.addScaledVector(locCenter, -s);
+
+          const homePos = new THREE.Vector3(homeX, 0.1, homeZ);
+          node.group.position.copy(homePos).lerp(targetWorld, diagramProgress);
+
+          node.group.rotation.x = 0.26 * diagramProgress;
+          node.group.rotation.y = (elapsed * 0.58 + idx * 0.9) * diagramProgress;
+        }
+      });
+
+      // 4. Update Colorful SVG Schematic Connection Curves & Signal Packets
+      if (diagramProgress > 0.02 && diagramEdges.length > 0) {
+        diagramEdges.forEach((edge) => {
+          const nA = partNodes[edge.from];
+          const nB = partNodes[edge.to];
+          if (!nA || !nB) return;
+
+          const dx = nB.currentScreenX - nA.currentScreenX;
+          const dy = nB.currentScreenY - nA.currentScreenY;
+          const isLinkedToSelected = (edge.from === selectedIdx || edge.to === selectedIdx);
+
+          const portScale = 0.35 + 0.65 * diagramProgress;
+          const hwA = (nA.halfW || 120) * portScale;
+          const hhA = (nA.halfH || 54) * portScale;
+          const hwB = (nB.halfW || 120) * portScale;
+          const hhB = (nB.halfH || 54) * portScale;
+
+          let x1 = nA.currentScreenX;
+          let y1 = nA.currentScreenY;
+          let x2 = nB.currentScreenX;
+          let y2 = nB.currentScreenY;
+          let cx1, cy1, cx2, cy2;
+
+          if (Math.abs(dx) > Math.abs(dy) * 0.95) {
+            const signX = dx >= 0 ? 1 : -1;
+            x1 += signX * hwA;
+            x2 -= signX * hwB;
+            const bend = (x2 - x1) * 0.5;
+            cx1 = x1 + bend;
+            cy1 = y1;
+            cx2 = x2 - bend;
+            cy2 = y2;
+          } else {
+            const signY = dy >= 0 ? 1 : -1;
+            y1 += signY * hhA;
+            y2 -= signY * hhB;
+            const bend = (y2 - y1) * 0.5;
+            cx1 = x1;
+            cy1 = y1 + bend;
+            cx2 = x2;
+            cy2 = y2 - bend;
+          }
+
+          const d = `M ${x1.toFixed(1)} ${y1.toFixed(1)} C ${cx1.toFixed(1)} ${cy1.toFixed(1)}, ${cx2.toFixed(1)} ${cy2.toFixed(1)}, ${x2.toFixed(1)} ${y2.toFixed(1)}`;
+          edge.pathEl.setAttribute('d', d);
+          edge.pathEl.setAttribute('opacity', String(isLinkedToSelected ? 0.96 : (edge.primary ? 0.72 : 0.45)));
+          edge.pathEl.setAttribute('stroke-width', isLinkedToSelected ? '2.4' : (edge.primary ? '1.85' : '1.3'));
+
+          edge.portStartEl.setAttribute('cx', x1.toFixed(1));
+          edge.portStartEl.setAttribute('cy', y1.toFixed(1));
+          edge.portEndEl.setAttribute('cx', x2.toFixed(1));
+          edge.portEndEl.setAttribute('cy', y2.toFixed(1));
+
+          edge.t = (edge.t + edge.speed * (isLinkedToSelected ? 1.4 : 1.0)) % 1;
+          const px = evalCubicBezier(x1, cx1, cx2, x2, edge.t);
+          const py = evalCubicBezier(y1, cy1, cy2, y2, edge.t);
+          edge.pktEl.setAttribute('r', isLinkedToSelected ? '5.2' : (edge.primary ? '4.2' : '3.4'));
+          edge.pktEl.setAttribute('cx', px.toFixed(1));
+          edge.pktEl.setAttribute('cy', py.toFixed(1));
+          edge.pktEl.setAttribute('opacity', isLinkedToSelected ? '1' : '0.88');
+
+          const mx = evalCubicBezier(x1, cx1, cx2, x2, 0.5);
+          const my = evalCubicBezier(y1, cy1, cy2, y2, 0.5);
+          edge.badgeEl.setAttribute('transform', `translate(${mx.toFixed(1)}, ${my.toFixed(1)})`);
+          edge.badgeEl.setAttribute('opacity', String(Math.max(0, (diagramProgress - 0.4) / 0.6) * (isLinkedToSelected ? 1 : 0.88)));
+        });
+      }
     }
 
     function animate() {
       requestAnimationFrame(animate);
       const elapsed = clock.getElapsedTime();
 
-      // Smoothly animate transition between Island World (0) and Spread Diagram View (1)
+      // Smoothly animate transition between Island World (0) and Colorful Schematic Diagram (1)
       const targetDiag = isDiagramMode ? 1 : 0;
       const diffDiag = targetDiag - diagramProgress;
       if (Math.abs(diffDiag) > 0.0005) {
-        diagramProgress += diffDiag * 0.085;
-        if (Math.abs(targetDiag - diagramProgress) <= 0.0005) {
+        diagramProgress += diffDiag * 0.095;
+        if (Math.abs(targetDiag - diagramProgress) <= 0.001) {
           diagramProgress = targetDiag;
         }
-
-        const spreadFactor = 1 + diagramProgress * 0.85;
         setIslandVisibilityAndFade(1 - diagramProgress);
-
-        // Spread or contract landmarks smoothly
-        partNodes.forEach((node) => {
-          const p = machineParts[node.index];
-          if (p) {
-            node.group.position.set(p.x * spreadFactor, 0.1, p.z * spreadFactor);
-          }
-        });
-
-        // Update green connecting ribbons to follow the spreading landmarks
-        ribbonConnections.forEach((conn) => {
-          const pA = machineParts[conn.i];
-          const pB = machineParts[conn.j];
-          if (!pA || !pB) return;
-          const { curve, geo } = createRibbonGeometry(pA, pB, spreadFactor, conn.edgeIdx);
-          conn.tubeMesh.geometry.dispose();
-          conn.tubeMesh.geometry = geo;
-          conn.curve = curve;
-        });
       }
 
-      // Gentle levitation of the entire floating world in the center of the screen
-      worldFloatGroup.position.y = Math.sin(elapsed * 1.15) * 0.16 * (1 - diagramProgress * 0.5);
-      if (!isOrbiting && !isDraggingPart) {
+      // Gentle levitation of the floating island in World Mode (settles to 0 in Diagram Mode)
+      worldFloatGroup.position.y = Math.sin(elapsed * 1.15) * 0.16 * (1 - diagramProgress);
+      if (!isOrbiting && !isDraggingPart && !isDiagramMode) {
         camTheta += 0.0007;
       }
 
       envAnimators.forEach(fn => fn(elapsed));
       activeAnimators.forEach(fn => fn(elapsed));
 
-      const effectiveRadius = camRadius * (1 + diagramProgress * 0.18);
-      camera.position.x = camTarget.x + effectiveRadius * Math.sin(camPhi) * Math.sin(camTheta);
-      camera.position.y = camTarget.y + effectiveRadius * Math.cos(camPhi);
-      camera.position.z = camTarget.z + effectiveRadius * Math.sin(camPhi) * Math.cos(camTheta);
+      camera.position.x = camTarget.x + camRadius * Math.sin(camPhi) * Math.sin(camTheta);
+      camera.position.y = camTarget.y + camRadius * Math.cos(camPhi);
+      camera.position.z = camTarget.z + camRadius * Math.sin(camPhi) * Math.cos(camTheta);
       camera.lookAt(camTarget);
+      camera.updateMatrixWorld();
 
+      updateLabels(elapsed);
+
+      // Hardware scissor-clip docked 3D landmarks strictly to their .diagram-part-3d-slot box so they never cover card text
+      if (diagramProgress > 0.85 && partNodes.length > 0) {
+        renderer.autoClear = false;
+        renderer.setScissorTest(false);
+        renderer.clear();
+        renderer.setScissorTest(true);
+        partNodes.forEach((node) => {
+          if (!node.group || !node.slotClipRect) return;
+          partNodes.forEach((other) => {
+            if (other.group) other.group.visible = (other === node);
+          });
+          const r = node.slotClipRect;
+          renderer.setScissor(r.x, r.y, r.w, r.h);
+          renderer.render(scene, camera);
+        });
+        partNodes.forEach((other) => {
+          if (other.group) other.group.visible = true;
+        });
+        renderer.setScissorTest(false);
+        renderer.autoClear = true;
+        return;
+      }
+
+      renderer.setScissorTest(false);
       renderer.render(scene, camera);
-      updateLabels();
     }
 
     window.addEventListener('resize', () => {
